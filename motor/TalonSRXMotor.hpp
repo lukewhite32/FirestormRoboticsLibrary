@@ -7,11 +7,17 @@
 
 class TalonSRXMotor : public BaseMotor{
     TalonSRX* talon;
+    bool invert = false;
 public:
     TalonSRXMotor (int canID){
         talon = new TalonSRX(canID);
     }
-
+    
+    bool setInverted() {
+        invert =! invert;
+        talon -> SetInverted(invert);
+    }
+    
     void SetPercent(double speed){
         talon -> Set(ControlMode::PercentOutput, speed);
     }
@@ -45,5 +51,13 @@ public:
 
     void SetSpeedPID(double speed){
         talon -> Set(ControlMode::Velocity, speed);
+    }
+    
+    double GetPosition() {
+        return talon -> GetSelectedSensorPosition();
+    }
+    
+    double GetVelocity() {
+        return talon -> GetSelectedSensorVelocity();
     }
 };
