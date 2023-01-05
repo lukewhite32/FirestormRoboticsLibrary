@@ -8,15 +8,28 @@
 
 class TalonFXMotor : public BaseMotor{
     TalonFX* talon;
+    bool invert = false;
 public:
     TalonFXMotor (int canID){
         talon = new TalonFX(canID);
     }
 
     void SetPercent(double speed){
+        if (speed < 0) {
+            talon -> SetInverted(!invert);
+            speed *= -1;
+        }
+        else {
+            talon -> SetInverted(invert);
+        }   
+        
         talon -> Set(ControlMode::PercentOutput, speed);
     }
 
+    void setInverted() {
+        invert =! invert;
+    }
+    
     void SetP(double kP){
         talon -> Config_kP(0, kP);
     }
@@ -40,11 +53,43 @@ public:
         talon -> ConfigNominalOutputReverse(kNominalOR);
     }
 
+    double GetPosition() {
+        return talon -> GetSeletedSensorPosition();
+    }
+    
+    double GetVelocity() {
+        return talon -> GetSelectedSensorVelocity();
+    }
+    
     void SetPositionPID(double position){
+        if (position < 0) {
+            talon -> SetInverted(!invert);
+            position *= -1;
+        }
+        else {
+            talon -> SetInverted(invert);
+        }   
+            
         talon -> Set(ControlMode::Position, position);
     }
 
     void SetSpeedPID(double speed){
+        if (speed < 0) {
+            talon -> SetInverted(!invert);
+            speed *= -1;
+        }
+        else {
+            talon -> SetInverted(invert);
+        }   
+        
         talon -> Set(ControlMode::Velocity, speed);
+    }
+    
+    void SetZeroEncoder() {
+        talon -> SetSelectedSensorPosition(0);
+    }
+    
+    bool IsAtZero() {
+        return GetPosition() == 0;
     }
 };
