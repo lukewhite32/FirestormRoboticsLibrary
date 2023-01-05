@@ -14,12 +14,19 @@ struct _SparkMotorEncoderControlContainer{
 class SparkMotor : public BaseMotor {
     _SparkMotorEncoderControlContainer* controls;
     rev::CANSparkMax* spark;
+    
+    bool invert = false;
 public:
     SparkMotor(int canID){
         spark = new rev::CANSparkMax (canID, rev::CANSparkMax::MotorType::kBrushless);
         controls = new _SparkMotorEncoderControlContainer {spark -> GetEncoder(), spark -> GetPIDController()};
     }
 
+    void setInverted() {
+        invert =! invert;
+        spark -> SetInverted(invert);
+    }
+    
     void SetPercent(double percent){
         spark -> Set(percent);
     }
@@ -43,12 +50,24 @@ public:
     void SetOutputRange(double kPeakOF, double kPeakOR, double kNominalOF = 0, double kNominalOR = 0){
         controls -> pid.SetOutputRange(kPeakOR, kPeakOF); // Ignore nominal values; this is Spark.
     }
-
+        
+    double GetPosition() {
+        return controls -> encoder.GetPosition();
+    }
+    
+    double GetVelocity() {
+        return controls -> encoder.GetVelocity();
+    }
+        
     void SetPositionPID(double position){
         controls -> pid.SetReference(position, rev::CANSparkMax::ControlType::kPosition);
     }
 
     void SetSpeedPID(double speed){
         controls -> pid.SetReference(speed, rev::CANSparkMax::ControlType::kVelocity);
+    }
+        
+    bool isAtZero() {
+        return GetPosition() == 0;
     }
 };
