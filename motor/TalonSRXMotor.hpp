@@ -19,6 +19,13 @@ public:
     }
     
     void SetPercent(double speed){
+        if (speed < 0) {
+            talon -> SetInverted(!invert);
+        }
+        else {
+            talon -> SetInverted(invert);
+        }
+        
         talon -> Set(ControlMode::PercentOutput, speed);
     }
 
@@ -46,10 +53,24 @@ public:
     }
 
     void SetPositionPID(double position){
+        if (position < 0) {
+            talon -> SetInverted(!invert);
+        }
+        else {
+            talon -> SetInverted(invert);
+        }
+        
         talon -> Set(ControlMode::Position, position);
     }
 
     void SetSpeedPID(double speed){
+        if (speed < 0) {
+            talon -> SetInverted(!invert);
+        }
+        else {
+            talon -> SetInverted(invert);
+        }
+        
         talon -> Set(ControlMode::Velocity, speed);
     }
     
@@ -59,5 +80,9 @@ public:
     
     double GetVelocity() {
         return talon -> GetSelectedSensorVelocity();
+    }
+    
+    bool isAtZero() {
+        return GetPosition() == 0;
     }
 };
