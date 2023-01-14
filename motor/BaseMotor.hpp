@@ -1,3 +1,4 @@
+#pragma once
 /* By Tyler Clarke. Base class for polymorphing highly compatible motors */
 
 
