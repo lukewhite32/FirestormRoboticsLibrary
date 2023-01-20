@@ -15,6 +15,10 @@ class TalonFXMotor : public BaseMotor{
     TalonFX* talon;
     bool invert = false;
 public:
+    /**
+     * Construct a Talon FX
+     @param canID The CAN id of the Talon it's wrapping
+     */
     TalonFXMotor (int canID){
         talon = new TalonFX(canID);
     }

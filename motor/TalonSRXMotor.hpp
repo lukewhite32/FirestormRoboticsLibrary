@@ -16,6 +16,10 @@ class TalonSRXMotor : public BaseMotor{
      */
     TalonSRX* talon;
 public:
+    /**
+     * Construct a Talon SRX wrapper.
+     @param canID The CAN id of the Talon it's wrapping.
+     */
     TalonSRXMotor (int canID){
         talon = new TalonSRX(canID);
     }

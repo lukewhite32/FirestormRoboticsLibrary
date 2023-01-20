@@ -22,6 +22,10 @@ public:
     _SparkMotorEncoderControlContainer* controls;
     rev::CANSparkMax* spark;
 
+    /**
+     * Construct a spark motor. Creates a new rev::CANSparkMax.
+     @param canID The CAN id of the Spark Max it's wrapping.
+     */
     SparkMotor(int canID){
         spark = new rev::CANSparkMax (canID, rev::CANSparkMax::MotorType::kBrushless);
         controls = new _SparkMotorEncoderControlContainer {spark -> GetEncoder(), spark -> GetPIDController()};

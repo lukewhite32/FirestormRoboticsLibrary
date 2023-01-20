@@ -12,7 +12,10 @@
 
 class PlaceboMotor : public BaseMotor{
 public: // Does NOTHING for now. Add printouts later, if necessary. It's a placebo!
-    PlaceboMotor (int canID){
+    /**
+     * Construct a new placebo motor. Does nothing.
+     */
+    PlaceboMotor (){
     }
 
     void SetPercent(double speed){
