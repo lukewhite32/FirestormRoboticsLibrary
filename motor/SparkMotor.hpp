@@ -2,7 +2,7 @@
 
 
 #include <rev/CANSparkMax.h> /* Requires REVLib */
-#include <BaseMotor.hpp>
+#include "BaseMotor.hpp"
 
 
 struct _SparkMotorEncoderControlContainer{
@@ -12,11 +12,12 @@ struct _SparkMotorEncoderControlContainer{
 
 
 class SparkMotor : public BaseMotor {
+public:
     _SparkMotorEncoderControlContainer* controls;
     rev::CANSparkMax* spark;
     
     bool invert = false;
-public:
+
     SparkMotor(int canID){
         spark = new rev::CANSparkMax (canID, rev::CANSparkMax::MotorType::kBrushless);
         controls = new _SparkMotorEncoderControlContainer {spark -> GetEncoder(), spark -> GetPIDController()};
