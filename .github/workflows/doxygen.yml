@@ -4,14 +4,13 @@ on:
   pull_request:
     branches: [ "master" ]
 
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Test
-        run: ls
-        shell: bash
-      - name: "Doxygen!"
-        uses: mattnotmitt/doxygen-action@1.9.5
+      - uses: DenverCoder1/doxygen-github-pages-action@v1
         with:
-          working-directory: .
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+          folder: docs
