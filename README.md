@@ -15,3 +15,5 @@ to `build.gradle` in your robot project.
 From there, just `#include <FRL/whatever/whatever.hpp>` to use libraries.
 
 Everything is kept under the namespace `frl` - theoretically. In practice almost nothing is. This is a Work In Progress.
+
+[Documentation for FRL](https://firestorm-robotics-code.github.io/FirestormRoboticsLibrary/html/)
