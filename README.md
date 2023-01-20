@@ -1,3 +1,6 @@
+This is a very simple set of C++ libraries for Firestorm Robotics (FRC 6341) and indeed anybody else. Written by the coders at Firestorm Robotics.  
+Support for Windows and MacOS not guaranteed - we're largely a Linux team
+
 To use:
 Download [use.py](https://firestorm-robotics-code.github.io/FirestormRoboticsLibrary/use.py) and place it in your robot project's root directory (NOT under src!) and add
 ```
