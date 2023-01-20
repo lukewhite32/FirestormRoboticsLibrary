@@ -4,17 +4,27 @@
 #include <ctre/Phoenix.h> /* Requires Phoenix along with this vendordep */
 #include <BaseMotor.hpp>
 
+/**
+ @author Tyler Clarke and Luke White
+ @version 1.0
 
+ * Talon SRX motor wrapper.
+ */
 class TalonSRXMotor : public BaseMotor{
+    /**
+     * Internal pointer to a heap-allocated Talon SRX.
+     */
     TalonSRX* talon;
-    bool invert = false;
 public:
     TalonSRXMotor (int canID){
         talon = new TalonSRX(canID);
     }
+
+    ~TalonSRXMotor (){
+        delete talon;
+    }
     
-    bool setInverted() {
-        invert =! invert;
+    bool SetInverted(bool invert) {
         talon -> SetInverted(invert);
     }
     
@@ -80,9 +90,5 @@ public:
     
     double GetVelocity() {
         return talon -> GetSelectedSensorVelocity();
-    }
-    
-    bool isAtZero() {
-        return GetPosition() == 0;
     }
 };

@@ -1,0 +1,275 @@
+\hypertarget{ModularRobot_8hpp_source}{}\doxysection{Modular\+Robot.\+hpp}
+\label{ModularRobot_8hpp_source}\index{bases/ModularRobot.hpp@{bases/ModularRobot.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ By\ Tyler\ Clarke\ based\ on\ the\ WPILib\ "{}RobotBase\ Skeleton"{}}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ RETIRED:\ This\ is\ here\ for\ backwards\ compatibility\ only.\ You\ should\ not\ use\ it\ in\ new\ robot\ projects;\ instead,\ try\ AwesomeRobotBase.hpp}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ Highly\ modular\ FRC\ robot\ class\ with\ threading\ support}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ Basically\ a\ better\ version\ of\ Timed\ Robot.}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <frc/RobotBase.h>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <thread>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <frc/Notifier.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <units/time.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <frc/internal/DriverStationModeThread.h>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModularRobot}{ModularRobot}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModule}{Module}}\{\ \textcolor{comment}{//\ Not\ much\ of\ a\ base\ class,\ but\ it\ serves\ a\ purpose!}}
+\DoxyCodeLine{00023\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classModularRobot}{ModularRobot}}*\ myRobot;}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ beginModule(\mbox{\hyperlink{classModularRobot}{ModularRobot}}*\ robot)\{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ myRobot\ =\ robot;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ init(robot);}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ init(\mbox{\hyperlink{classModularRobot}{ModularRobot}}*\ robot)\{}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ run(\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ tick)\{}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classModularRobot}{ModularRobot}}\ :\ \textcolor{keyword}{public}\ frc::RobotBase\{}
+\DoxyCodeLine{00046\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00047\ \ \ \ \ std::atomic<bool>\ m\_exit\{\textcolor{keyword}{false}\};}
+\DoxyCodeLine{00048\ \ \ \ \ std::vector<Module>\ modules;}
+\DoxyCodeLine{00049\ \ \ \ \ std::string\ RobotName;}
+\DoxyCodeLine{00050\ \ \ \ \ std::string\ TeamName;}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ TeamNumber;}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ tick;\ \textcolor{comment}{//\ Number\ of\ iterations\ since\ robot\ began}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ localTick;\ \textcolor{comment}{//\ Number\ of\ iterations\ since\ current\ operation-\/mode\ began}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \textcolor{keywordtype}{long}\ periodicDelayValue\ =\ 200000;}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ message;}
+\DoxyCodeLine{00056\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00057\ \ \ \ \ uint8\_t\ mode\ =\ 0;\ \textcolor{comment}{//\ 0\ =\ disabled,\ 1\ =\ autonomous,\ 2\ =\ test,\ 3\ =\ teleop}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ setData(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ robotname,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ teamname,\ \textcolor{keywordtype}{int}\ teamnumber)\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ RobotName\ =\ robotname;}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ TeamNumber\ =\ teamnumber;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ TeamName\ =\ teamname;}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Init()\{}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ BeginDisabled()\{}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ DisabledLoop()\{}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ CleanUpDisabled()\{}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ BeginTeleop()\{}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ TeleopLoop()\{}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ CleanUpTeleop()\{}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ BeginTest()\{}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ TestLoop()\{}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ CleanUpTest()\{}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ BeginAutonomous()\{}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ AutonomousLoop()\{}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ CleanUpAutonomous()\{}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Loop()\{}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \}\ \textcolor{comment}{//\ User\ mainloop}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ ItsOver()\{}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ TeleopPeriodic()\{}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \}}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ AutonomousPeriodic()\{}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \}}
+\DoxyCodeLine{00131\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ TestPeriodic()\{}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \}}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ setPeriodicDelay(\textcolor{keywordtype}{long}\ micros)\{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ periodicDelayValue\ =\ micros;}
+\DoxyCodeLine{00138\ \ \ \ \ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ periodicThread(\mbox{\hyperlink{classModularRobot}{ModularRobot}}\ *self)\{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (1)\{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}(self\ -\/>\ mode)\{}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self\ -\/>\ AutonomousPeriodic();}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 2:}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self\ -\/>\ TestPeriodic();}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 3:}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ self\ -\/>\ TeleopPeriodic();}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ usleep(self\ -\/>\ periodicDelayValue);}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00155\ \ \ \ \ \}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{void}\ periodicBegin()\{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ std::thread\ periodic(periodicThread,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ periodic.detach();}
+\DoxyCodeLine{00160\ \ \ \ \ \}}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{void}\ addModule(\mbox{\hyperlink{classModule}{Module}}\ module)\{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ modules.push\_back(module);}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ module.beginModule(\textcolor{keyword}{this});\ \textcolor{comment}{//\ Module\ init\ function\ should\ take\ a\ pointer\ to\ a\ ModularRobot}}
+\DoxyCodeLine{00165\ \ \ \ \ \}}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{void}\ loop()\{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\mbox{\hyperlink{classModule}{Module}}\ i\ :\ modules)\{}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ i.run(tick);}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ Loop();}
+\DoxyCodeLine{00172\ \ \ \ \ \}}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{keywordtype}{void}\ StartCompetition()\{}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ Init();}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ std::cout\ <<\ RobotName\ <<\ \textcolor{stringliteral}{"{}\ by\ "{}}\ <<\ TeamName\ <<\ \textcolor{stringliteral}{"{}\ (FRC\ "{}}\ <<\ TeamNumber\ <<\ \textcolor{stringliteral}{"{})\ is\ now\ turning\ on!"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ frc::internal::DriverStationModeThread\ modeThread;}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ wpi::Event\ \textcolor{keyword}{event}\{\textcolor{keyword}{false},\ \textcolor{keyword}{false}\};}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ frc::DriverStation::ProvideRefreshedDataEventHandle(event.GetHandle());}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ HAL\_ObserveUserProgramStarting();}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ std::thread\ periodic(periodicThread,\ \textcolor{keyword}{this});}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ periodic.detach();}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!m\_exit)\{\ \textcolor{comment}{//\ Restructured\ from\ the\ old\ uglies.\ This\ one\ gives\ easy-\/peasy\ mainlooping\ without\ our\ ugly-\/mugly\ turdy-\/purdy\ stinky-\/winky\ infinite\ while\ loop}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ loop();\ \textcolor{comment}{//\ General\ mainloop}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsDisabled())\{\ \textcolor{comment}{//\ Disabled\ tasks}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ !=\ 0)\{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_SendConsoleLine(\textcolor{stringliteral}{"{}Begin\ Disable\ mode"{}});}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ localTick\ =\ 0;\ \textcolor{comment}{//\ Reset\ the\ local\ tick\ counter}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BeginDisabled();}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ 1)\{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CleanUpAutonomous();}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (mode\ ==\ 2)\{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CleanUpTest();}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (mode\ ==\ 3)\{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CleanUpTeleop();}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ modeThread.InDisabled(\textcolor{keyword}{true});}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DisabledLoop();}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ modeThread.InDisabled(\textcolor{keyword}{false});}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mode\ =\ 0;}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (IsAutonomous())\{\ \textcolor{comment}{//\ Autonomous\ tasks}}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ !=\ 1)\{}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_SendConsoleLine(\textcolor{stringliteral}{"{}Begin\ Autonomous\ mode"{}});}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ localTick\ =\ 0;\ \textcolor{comment}{//\ Reset\ the\ local\ tick\ counter}}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BeginAutonomous();}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ 0)\{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CleanUpDisabled();}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (mode\ ==\ 2)\{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CleanUpTest();}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (mode\ ==\ 3)\{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CleanUpTeleop();}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ modeThread.InAutonomous(\textcolor{keyword}{true});}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ AutonomousLoop();}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ modeThread.InAutonomous(\textcolor{keyword}{false});}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mode\ =\ 1;}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (IsTest())\{\ \textcolor{comment}{//\ Test\ tasks}}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ !=\ 2)\{}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_SendConsoleLine(\textcolor{stringliteral}{"{}Begin\ Test\ mode"{}});}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ localTick\ =\ 0;\ \textcolor{comment}{//\ Reset\ the\ local\ tick\ counter}}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BeginTest();}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ 0)\{}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CleanUpDisabled();}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (mode\ ==\ 1)\{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CleanUpAutonomous();}
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (mode\ ==\ 3)\{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CleanUpTeleop();}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ modeThread.InTest(\textcolor{keyword}{true});}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TestLoop();}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ modeThread.InTest(\textcolor{keyword}{false});}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mode\ =\ 2;}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{\ \textcolor{comment}{//\ Teleop\ tasks}}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ !=\ 3)\{}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ HAL\_SendConsoleLine(\textcolor{stringliteral}{"{}Begin\ Teleop\ mode"{}});}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ localTick\ =\ 0;\ \textcolor{comment}{//\ Reset\ the\ local\ tick\ counter}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ BeginTeleop();}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (mode\ ==\ 0)\{}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CleanUpDisabled();}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (mode\ ==\ 1)\{}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CleanUpAutonomous();}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (mode\ ==\ 2)\{}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ CleanUpTest();}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ modeThread.InTeleop(\textcolor{keyword}{true});}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TeleopLoop();}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ modeThread.InTeleop(\textcolor{keyword}{false});}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mode\ =\ 3;}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \ \ \ \ tick++;\ \textcolor{comment}{//\ Update\ the\ tick\ counters}}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \ \ \ \ localTick++;}
+\DoxyCodeLine{00270\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ ItsOver();}
+\DoxyCodeLine{00272\ \ \ \ \ \}}
+\DoxyCodeLine{00273\ \ \ \ \ \textcolor{keywordtype}{void}\ EndCompetition()\ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ m\_exit\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00275\ \ \ \ \ \}}
+\DoxyCodeLine{00276\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,167 @@
+\hypertarget{AwesomeRobotBase_8hpp_source}{}\doxysection{Awesome\+Robot\+Base.\+hpp}
+\label{AwesomeRobotBase_8hpp_source}\index{bases/AwesomeRobotBase.hpp@{bases/AwesomeRobotBase.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ By\ Tyler\ Clarke}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ More\ modern\ version\ of\ ModularRobot\ based\ on\ C++20.\ Experimental,\ but\ stable\ enough\ for\ usage\ at\ the\ moment.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <frc/RobotBase.h>}\ \textcolor{comment}{//\ todo:\ trim\ down\ includes}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <pthread.h>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <atomic>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <frc/Timer.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <frc/internal/DriverStationModeThread.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <frc/DriverStation.h>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classRobotMode}{RobotMode}}\ \{}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classRobotMode_a2fc1b636ee6db74b85132597de090e0f}{hz}}\ =\ 50;}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ std::atomic\ <bool>\ \mbox{\hyperlink{classRobotMode_a4b9a7b96533619a5a436a81132b7f4c1}{noThread}}\ =\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Set\ to\ true\ if\ thread\ creation\ failed.\ Should\ be\ checked\ occasionally.}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRobotMode_acaf6db413909122cf6a07721e926f0ef}{Init}}()\{}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRobotMode_afb835e0d2dea1fb9565d5f7e7414db5f}{Start}}()\ \{}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRobotMode_a80816838e8df14d04c4ad28115e9d296}{Synchronous}}()\ \{}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRobotMode_ad722d225b8e2d92d9b42487a81e46025}{Thread}}()\ \{}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classRobotMode_a5b1c94303b8c1853fc067943723ee725}{End}}()\ \{}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00107\ \textcolor{keyword}{template}\ <\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{00108\ \textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptRobotModeType}{RobotModeType}}\ =\ std::is\_base\_of\ <RobotMode,\ T>::value;}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00116\ \textcolor{keyword}{template}\ <RobotModeType\ TeleopModeType,\ RobotModeType\ AutonomousModeType,\ RobotModeType\ TestModeType,\ RobotModeType\ DisabledModeType>}
+\DoxyCodeLine{00117\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classAwesomeRobot}{AwesomeRobot}}\ :\ \textcolor{keyword}{public}\ frc::RobotBase\ \{}
+\DoxyCodeLine{00121\ \ \ \ \ std::atomic<bool>\ \mbox{\hyperlink{classAwesomeRobot_a5104b42bd2b4a1a2d40863437bae4ecd}{m\_exit}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00128\ \ \ \ \ TeleopModeType*\ \mbox{\hyperlink{classAwesomeRobot_ad687758b6042128c2be19905e3198be0}{teleop}}\ =\ \textcolor{keyword}{new}\ TeleopModeType;}
+\DoxyCodeLine{00134\ \ \ \ \ AutonomousModeType*\ \mbox{\hyperlink{classAwesomeRobot_aeb0d4d5e6c144e0dc59266068722d30f}{autonomous}}\ =\ \textcolor{keyword}{new}\ AutonomousModeType;}
+\DoxyCodeLine{00140\ \ \ \ \ TestModeType*\ \mbox{\hyperlink{classAwesomeRobot_add05722b3d068ed3d3bece0da359c026}{test}}\ =\ \textcolor{keyword}{new}\ TestModeType;}
+\DoxyCodeLine{00146\ \ \ \ \ DisabledModeType*\ \mbox{\hyperlink{classAwesomeRobot_acd8b7b2f69fee40a5e7eecea2034c70c}{disabled}}\ =\ \textcolor{keyword}{new}\ DisabledModeType;}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00151\ \ \ \ \ \mbox{\hyperlink{classRobotMode}{RobotMode}}*\ \mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ =\ 0;}
+\DoxyCodeLine{00155\ \ \ \ \ pthread\_t\ \mbox{\hyperlink{classAwesomeRobot_af663d48448751d8b604e4af786cf648d}{thread}};}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00160\ \ \ \ \ frc::internal::DriverStationModeThread\ \mbox{\hyperlink{classAwesomeRobot_a2b20a55f071f5be4edf36e643c89877e}{modeThread}};}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}*\ \mbox{\hyperlink{classAwesomeRobot_ac3473d28125ce877756f0d1d930558e3}{thread\_function}}(\textcolor{keywordtype}{void}*\ \_robot)\{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot}{AwesomeRobot}}*\ robot\ =\ (\mbox{\hyperlink{classAwesomeRobot}{AwesomeRobot}}*)\_robot;}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ pthread\_setcanceltype(PTHREAD\_CANCEL\_ASYNCHRONOUS,\ NULL);\ \textcolor{comment}{//\ Set\ how\ the\ thread\ should\ handle\ being\ cancelled}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ Asynchronous\ cancel\ type\ means\ it\ can\ be\ canceled\ at\ any\ time;\ the\ alternative\ "{}deferred"{}\ means\ it\ waits\ until\ a\ library\ function\ checks\ if\ there's\ a\ queued\ cancel\ request.}}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ want\ to\ be\ able\ to\ run\ infinite\ loops\ in\ here,\ so\ asynchronous\ is\ the\ best\ and\ only\ option.}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ lastTime\ =\ (double)frc::Timer::GetFPGATimestamp();}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ frameSecs\ =\ 1/robot\ -\/>\ \mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ -\/>\ hz;\ \textcolor{comment}{//\ Maintain\ this\ many\ seconds\ per\ frame}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\{\ \textcolor{comment}{//\ Frequency\ loop}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ note\ that\ it's\ totally\ safe\ to\ run\ infinite\ loops,\ use\ delays,\ and\ etc\ in\ your\ Thread()\ code!\ This\ is\ just\ a\ frequency\ controller.}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ robot\ -\/>\ \mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ -\/>\ Thread();}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ timeElapsed\ =\ (double)frc::Timer::GetFPGATimestamp()\ -\/\ lastTime;\ \textcolor{comment}{//\ Seconds\ the\ frame\ took}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (timeElapsed\ <\ frameSecs)\{\ \textcolor{comment}{//\ If\ it\ took\ too\ long,\ don't\ even\ bother\ waiting}}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sleep((frameSecs\ -\/\ timeElapsed));\ \textcolor{comment}{//\ Wait\ to\ fill\ in\ the\ missed\ 1/hz\ seconds.}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00181\ \ \ \ \ \}}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00187\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAwesomeRobot_a122fe1f14e545a187bafd5c5f86071f5}{switchMode}}(\mbox{\hyperlink{classRobotMode}{RobotMode}}*\ toMode)\{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}})\{\ \textcolor{comment}{//\ If\ the\ pointer\ is\ actually\ set\ and\ isn't\ initial\ 0}}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ pthread\_cancel(\mbox{\hyperlink{classAwesomeRobot_af663d48448751d8b604e4af786cf648d}{thread}});\ \textcolor{comment}{//\ Only\ ever\ called\ if\ ActiveMode\ is\ non-\/NULL;\ e.g.\ switchMode\ has\ already\ been\ called\ and\ a\ thread\ is\ actually\ running}}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ pthread\_join(\mbox{\hyperlink{classAwesomeRobot_af663d48448751d8b604e4af786cf648d}{thread}},\ NULL);\ \textcolor{comment}{//\ It\ isn't\ guaranteed\ that\ cancellation\ will\ be\ immediate,\ even\ though\ the\ thread\ cancel\ type\ is\ asynchronous}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ It\ is,\ however,\ guaranteed\ that\ the\ thread\ will\ be\ exited\ as\ soon\ as\ pthread\_join\ returns}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ NULL\ means\ don't\ bother\ with\ the\ return\ value\ of\ the\ pthread's\ function}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ -\/>\ End();\ \textcolor{comment}{//\ End()\ may\ do\ cleanup\ work\ concerning\ threads\ (there\ are\ situations\ where\ this\ is\ acceptable,\ such\ \ as\ when\ memory\ has\ been\ allocated\ by\ Start\ specifically\ for\ the\ usage\ of\ that\ thread),}}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ so\ it's\ important\ that\ the\ thread\ really\ be\ exited\ by\ the\ time\ End()\ runs.}}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ =\ toMode;}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ toMode\ -\/>\ Start();}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a2b20a55f071f5be4edf36e643c89877e}{modeThread}}.InDisabled(\textcolor{keyword}{false});}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a2b20a55f071f5be4edf36e643c89877e}{modeThread}}.InAutonomous(\textcolor{keyword}{false});}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a2b20a55f071f5be4edf36e643c89877e}{modeThread}}.InTeleop(\textcolor{keyword}{false});}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a2b20a55f071f5be4edf36e643c89877e}{modeThread}}.InTest(\textcolor{keyword}{false});}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ ==\ \mbox{\hyperlink{classAwesomeRobot_acd8b7b2f69fee40a5e7eecea2034c70c}{disabled}})\{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a2b20a55f071f5be4edf36e643c89877e}{modeThread}}.InDisabled(\textcolor{keyword}{true});}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ ==\ \mbox{\hyperlink{classAwesomeRobot_ad687758b6042128c2be19905e3198be0}{teleop}})\{}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a2b20a55f071f5be4edf36e643c89877e}{modeThread}}.InTeleop(\textcolor{keyword}{true});}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ ==\ \mbox{\hyperlink{classAwesomeRobot_aeb0d4d5e6c144e0dc59266068722d30f}{autonomous}})\{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a2b20a55f071f5be4edf36e643c89877e}{modeThread}}.InAutonomous(\textcolor{keyword}{true});}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ ==\ \mbox{\hyperlink{classAwesomeRobot_add05722b3d068ed3d3bece0da359c026}{test}})\{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a2b20a55f071f5be4edf36e643c89877e}{modeThread}}.InTest(\textcolor{keyword}{true});}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Start\ the\ thread\ for\ that\ mode}}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (pthread\_create(\&\mbox{\hyperlink{classAwesomeRobot_af663d48448751d8b604e4af786cf648d}{thread}},\ NULL,\ \mbox{\hyperlink{classAwesomeRobot_ac3473d28125ce877756f0d1d930558e3}{thread\_function}},\ \textcolor{keyword}{this})\ !=\ 0)\{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ -\/>\ noThread\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Thread\ creation\ failed!\ Nothread\ flag\ set\ in\ the\ active\ robot\ mode."{}}\ <<\ std::endl;}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ -\/>\ noThread\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00222\ \ \ \ \ \}}
+\DoxyCodeLine{00223\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00228\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAwesomeRobot_ac220463a3cbed5b9a19fb7c213d32637}{StartCompetition}}()\{}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ wpi::Event\ \textcolor{keyword}{event}\{\textcolor{keyword}{false},\ \textcolor{keyword}{false}\};}
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ frc::DriverStation::ProvideRefreshedDataEventHandle(event.GetHandle());}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ HAL\_ObserveUserProgramStarting();}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_ad687758b6042128c2be19905e3198be0}{teleop}}\ -\/>\ Init();}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_aeb0d4d5e6c144e0dc59266068722d30f}{autonomous}}\ -\/>\ Init();}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_acd8b7b2f69fee40a5e7eecea2034c70c}{disabled}}\ -\/>\ Init();}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_add05722b3d068ed3d3bece0da359c026}{test}}\ -\/>\ Init();}
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (!\mbox{\hyperlink{classAwesomeRobot_a5104b42bd2b4a1a2d40863437bae4ecd}{m\_exit}})\{}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (IsDisabled())\{\ \textcolor{comment}{//\ Disabled\ tasks}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ !=\ \mbox{\hyperlink{classAwesomeRobot_acd8b7b2f69fee40a5e7eecea2034c70c}{disabled}})\{}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a122fe1f14e545a187bafd5c5f86071f5}{switchMode}}(\mbox{\hyperlink{classAwesomeRobot_acd8b7b2f69fee40a5e7eecea2034c70c}{disabled}});}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Switched\ to\ Disabled\ Mode"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (IsAutonomous())\{\ \textcolor{comment}{//\ Autonomous\ tasks}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ !=\ \mbox{\hyperlink{classAwesomeRobot_aeb0d4d5e6c144e0dc59266068722d30f}{autonomous}})\{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a122fe1f14e545a187bafd5c5f86071f5}{switchMode}}(\mbox{\hyperlink{classAwesomeRobot_aeb0d4d5e6c144e0dc59266068722d30f}{autonomous}});}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Switched\ to\ Autonomous\ Mode"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (IsTest())\{\ \textcolor{comment}{//\ Test\ tasks}}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ !=\ \mbox{\hyperlink{classAwesomeRobot_add05722b3d068ed3d3bece0da359c026}{test}})\{}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a122fe1f14e545a187bafd5c5f86071f5}{switchMode}}(\mbox{\hyperlink{classAwesomeRobot_add05722b3d068ed3d3bece0da359c026}{test}});}
+\DoxyCodeLine{00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Switched\ to\ Test\ Mode"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{\ \textcolor{comment}{//\ Teleop\ tasks}}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ !=\ \mbox{\hyperlink{classAwesomeRobot_ad687758b6042128c2be19905e3198be0}{teleop}})\{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a122fe1f14e545a187bafd5c5f86071f5}{switchMode}}(\mbox{\hyperlink{classAwesomeRobot_ad687758b6042128c2be19905e3198be0}{teleop}});}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Switched\ to\ Teleop\ Mode"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{activeMode}}\ -\/>\ Synchronous();\ \textcolor{comment}{//\ Synchronous\ looping}}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00266\ \ \ \ \ \}}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00271\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classAwesomeRobot_a917b1bec06fb298eedea890b25f46f99}{EndCompetition}}()\ \{}
+\DoxyCodeLine{00272\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classAwesomeRobot_a5104b42bd2b4a1a2d40863437bae4ecd}{m\_exit}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00273\ \ \ \ \ \}}
+\DoxyCodeLine{00274\ \};}
+
+\end{DoxyCode}

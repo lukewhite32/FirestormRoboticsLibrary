@@ -1,0 +1,252 @@
+\hypertarget{classTalonFXMotor}{}\doxysection{Talon\+FXMotor Class Reference}
+\label{classTalonFXMotor}\index{TalonFXMotor@{TalonFXMotor}}
+
+
+{\ttfamily \#include $<$Talon\+FXMotor.\+hpp$>$}
+
+Inheritance diagram for Talon\+FXMotor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classTalonFXMotor}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTalonFXMotor_a2a90bb0fb2f08ffc07db3964b4ea779a}\label{classTalonFXMotor_a2a90bb0fb2f08ffc07db3964b4ea779a}} 
+{\bfseries Talon\+FXMotor} (int can\+ID)
+\item 
+void \mbox{\hyperlink{classTalonFXMotor_a2c0d70b067e8763722f03c6673424091}{Set\+Percent}} (double speed)
+\item 
+void \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{Set\+Inverted}} (bool do\+Inv)
+\item 
+void \mbox{\hyperlink{classTalonFXMotor_a603def2b11e52b9cf320b515866a596f}{SetP}} (double kP)
+\item 
+void \mbox{\hyperlink{classTalonFXMotor_acc3a5363b99d07d6ae9b7c173e4c46c6}{SetI}} (double kI)
+\item 
+void \mbox{\hyperlink{classTalonFXMotor_ad516ef8612606e1ee81654e1cd965d68}{SetD}} (double kD)
+\item 
+void \mbox{\hyperlink{classTalonFXMotor_ad145cea61dc6700426f91b12d1d7c156}{SetF}} (double kF)
+\item 
+void \mbox{\hyperlink{classTalonFXMotor_a7eec1c3827396c4788f2b11eaa493638}{Set\+Output\+Range}} (double k\+Peak\+OF, double k\+Peak\+OR, double k\+Nominal\+OF=0, double k\+Nominal\+OR=0)
+\item 
+double \mbox{\hyperlink{classTalonFXMotor_aba41e1a0bc182f369221dd78f815fbb9}{Get\+Position}} ()
+\item 
+double \mbox{\hyperlink{classTalonFXMotor_a22a7dd81a2e793cf2cbc79e6dd100529}{Get\+Velocity}} ()
+\item 
+void \mbox{\hyperlink{classTalonFXMotor_a064e2fe34ef639705db6e7db64cc2ab4}{Set\+Position\+PID}} (double position)
+\item 
+void \mbox{\hyperlink{classTalonFXMotor_aa07be6b67d8b4b5c9f61a5d83866feee}{Set\+Speed\+PID}} (double speed)
+\item 
+\mbox{\Hypertarget{classTalonFXMotor_a31390c52447a4725d869ac2c7fcb9bef}\label{classTalonFXMotor_a31390c52447a4725d869ac2c7fcb9bef}} 
+void {\bfseries Set\+Zero\+Encoder} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_a61e487fddfbc270084284518470352e4}{Set\+Percent}} (double percent)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_adad95b74354e664d84113308c9db10e6}{Set\+Inverted}} (bool invert)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_aab8429fbe1317f1f0989524d0f99f0bc}{SetP}} (double kP)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_acd5e4478b4329fc341a8cf9a8957c6c7}{SetI}} (double kI)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_aba3832517f84b4a1f070dff92440422f}{SetD}} (double kD)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_a5eb4d772595a2cdf402e45e00b733aae}{SetF}} (double kF)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_aa025c0d9ad078567d03224193516ed29}{Set\+Output\+Range}} (double k\+Peak\+OF, double k\+Peak\+OR, double k\+Nominal\+OF, double k\+Nominal\+OR)=0
+\item 
+virtual double \mbox{\hyperlink{classBaseMotor_aebe865d9924792c55113031218e6b3c4}{Get\+Position}} ()=0
+\item 
+virtual double \mbox{\hyperlink{classBaseMotor_a6f452dd523c244b4c63282d1bdd967a6}{Get\+Velocity}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_a09ead7a8b2876c3177a0258c5608d357}{Set\+Position\+PID}} (double position)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_aab18866cd70caafc5a37f25287c79617}{Set\+Speed\+PID}} (double speed)=0
+\item 
+bool \mbox{\hyperlink{classBaseMotor_a0d530a9b0ff528db37733320f22366d3}{Is\+At\+Zero}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTalonFXMotor_ac6d2993a36d0ac17cfd7dd920eb3df2f}\label{classTalonFXMotor_ac6d2993a36d0ac17cfd7dd920eb3df2f}} 
+Talon\+FX $\ast$ {\bfseries talon}
+\item 
+\mbox{\Hypertarget{classTalonFXMotor_ac741ee3fefcdf01d2c9e2eaef42d704a}\label{classTalonFXMotor_ac741ee3fefcdf01d2c9e2eaef42d704a}} 
+bool {\bfseries invert} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tyler Clarke and Luke White 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 Talon FX Motor wrapper. 
+\end{DoxyVersion}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTalonFXMotor_aba41e1a0bc182f369221dd78f815fbb9}\label{classTalonFXMotor_aba41e1a0bc182f369221dd78f815fbb9}} 
+\index{TalonFXMotor@{TalonFXMotor}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!TalonFXMotor@{TalonFXMotor}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily double Talon\+FXMotor\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Return the encoder position of the motor. 
+
+Implements \mbox{\hyperlink{classBaseMotor_aebe865d9924792c55113031218e6b3c4}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonFXMotor_a22a7dd81a2e793cf2cbc79e6dd100529}\label{classTalonFXMotor_a22a7dd81a2e793cf2cbc79e6dd100529}} 
+\index{TalonFXMotor@{TalonFXMotor}!GetVelocity@{GetVelocity}}
+\index{GetVelocity@{GetVelocity}!TalonFXMotor@{TalonFXMotor}}
+\doxysubsubsection{\texorpdfstring{GetVelocity()}{GetVelocity()}}
+{\footnotesize\ttfamily double Talon\+FXMotor\+::\+Get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Return the encoder velocity of the motor. 
+
+Implements \mbox{\hyperlink{classBaseMotor_a6f452dd523c244b4c63282d1bdd967a6}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonFXMotor_ad516ef8612606e1ee81654e1cd965d68}\label{classTalonFXMotor_ad516ef8612606e1ee81654e1cd965d68}} 
+\index{TalonFXMotor@{TalonFXMotor}!SetD@{SetD}}
+\index{SetD@{SetD}!TalonFXMotor@{TalonFXMotor}}
+\doxysubsubsection{\texorpdfstring{SetD()}{SetD()}}
+{\footnotesize\ttfamily void Talon\+FXMotor\+::\+SetD (\begin{DoxyParamCaption}\item[{double}]{kD }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the PIDF \char`\"{}\+D\char`\"{} coefficient. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em kD} & The D coefficient \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_aba3832517f84b4a1f070dff92440422f}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonFXMotor_ad145cea61dc6700426f91b12d1d7c156}\label{classTalonFXMotor_ad145cea61dc6700426f91b12d1d7c156}} 
+\index{TalonFXMotor@{TalonFXMotor}!SetF@{SetF}}
+\index{SetF@{SetF}!TalonFXMotor@{TalonFXMotor}}
+\doxysubsubsection{\texorpdfstring{SetF()}{SetF()}}
+{\footnotesize\ttfamily void Talon\+FXMotor\+::\+SetF (\begin{DoxyParamCaption}\item[{double}]{kF }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the PIDF \char`\"{}\+F\char`\"{} coefficient. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em kF} & The F coefficient \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_a5eb4d772595a2cdf402e45e00b733aae}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonFXMotor_acc3a5363b99d07d6ae9b7c173e4c46c6}\label{classTalonFXMotor_acc3a5363b99d07d6ae9b7c173e4c46c6}} 
+\index{TalonFXMotor@{TalonFXMotor}!SetI@{SetI}}
+\index{SetI@{SetI}!TalonFXMotor@{TalonFXMotor}}
+\doxysubsubsection{\texorpdfstring{SetI()}{SetI()}}
+{\footnotesize\ttfamily void Talon\+FXMotor\+::\+SetI (\begin{DoxyParamCaption}\item[{double}]{kI }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the PIDF \char`\"{}\+I\char`\"{} coefficient. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em kI} & The I coefficient. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_acd5e4478b4329fc341a8cf9a8957c6c7}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}\label{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}} 
+\index{TalonFXMotor@{TalonFXMotor}!SetInverted@{SetInverted}}
+\index{SetInverted@{SetInverted}!TalonFXMotor@{TalonFXMotor}}
+\doxysubsubsection{\texorpdfstring{SetInverted()}{SetInverted()}}
+{\footnotesize\ttfamily void Talon\+FXMotor\+::\+Set\+Inverted (\begin{DoxyParamCaption}\item[{bool}]{invert }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the invertion state of the motor 
+\begin{DoxyParams}{Parameters}
+{\em percent} & The percentage of total power to run at. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_adad95b74354e664d84113308c9db10e6}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonFXMotor_a7eec1c3827396c4788f2b11eaa493638}\label{classTalonFXMotor_a7eec1c3827396c4788f2b11eaa493638}} 
+\index{TalonFXMotor@{TalonFXMotor}!SetOutputRange@{SetOutputRange}}
+\index{SetOutputRange@{SetOutputRange}!TalonFXMotor@{TalonFXMotor}}
+\doxysubsubsection{\texorpdfstring{SetOutputRange()}{SetOutputRange()}}
+{\footnotesize\ttfamily void Talon\+FXMotor\+::\+Set\+Output\+Range (\begin{DoxyParamCaption}\item[{double}]{k\+Peak\+OF,  }\item[{double}]{k\+Peak\+OR,  }\item[{double}]{k\+Nominal\+OF = {\ttfamily 0},  }\item[{double}]{k\+Nominal\+OR = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the PIDF output range. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em k\+Peak\+OF} & The maximum forward output \\
+\hline
+{\em k\+Peak\+OR} & The maximum reverse output \\
+\hline
+{\em k\+Nominal\+OF} & The \char`\"{}nominal\char`\"{} forward output \\
+\hline
+{\em k\+Nominal\+OR} & the \char`\"{}nominal\char`\"{} reverse output \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_aa025c0d9ad078567d03224193516ed29}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonFXMotor_a603def2b11e52b9cf320b515866a596f}\label{classTalonFXMotor_a603def2b11e52b9cf320b515866a596f}} 
+\index{TalonFXMotor@{TalonFXMotor}!SetP@{SetP}}
+\index{SetP@{SetP}!TalonFXMotor@{TalonFXMotor}}
+\doxysubsubsection{\texorpdfstring{SetP()}{SetP()}}
+{\footnotesize\ttfamily void Talon\+FXMotor\+::\+SetP (\begin{DoxyParamCaption}\item[{double}]{kP }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the PIDF \char`\"{}\+P\char`\"{} coefficient. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em kP} & The P coefficient. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_aab8429fbe1317f1f0989524d0f99f0bc}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonFXMotor_a2c0d70b067e8763722f03c6673424091}\label{classTalonFXMotor_a2c0d70b067e8763722f03c6673424091}} 
+\index{TalonFXMotor@{TalonFXMotor}!SetPercent@{SetPercent}}
+\index{SetPercent@{SetPercent}!TalonFXMotor@{TalonFXMotor}}
+\doxysubsubsection{\texorpdfstring{SetPercent()}{SetPercent()}}
+{\footnotesize\ttfamily void Talon\+FXMotor\+::\+Set\+Percent (\begin{DoxyParamCaption}\item[{double}]{percent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the motor to a percentage value. Range (-\/1, 1) of max power. 
+
+Implements \mbox{\hyperlink{classBaseMotor_a61e487fddfbc270084284518470352e4}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonFXMotor_a064e2fe34ef639705db6e7db64cc2ab4}\label{classTalonFXMotor_a064e2fe34ef639705db6e7db64cc2ab4}} 
+\index{TalonFXMotor@{TalonFXMotor}!SetPositionPID@{SetPositionPID}}
+\index{SetPositionPID@{SetPositionPID}!TalonFXMotor@{TalonFXMotor}}
+\doxysubsubsection{\texorpdfstring{SetPositionPID()}{SetPositionPID()}}
+{\footnotesize\ttfamily void Talon\+FXMotor\+::\+Set\+Position\+PID (\begin{DoxyParamCaption}\item[{double}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the position of the motor using PID. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em position} & The position to move to \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_a09ead7a8b2876c3177a0258c5608d357}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonFXMotor_aa07be6b67d8b4b5c9f61a5d83866feee}\label{classTalonFXMotor_aa07be6b67d8b4b5c9f61a5d83866feee}} 
+\index{TalonFXMotor@{TalonFXMotor}!SetSpeedPID@{SetSpeedPID}}
+\index{SetSpeedPID@{SetSpeedPID}!TalonFXMotor@{TalonFXMotor}}
+\doxysubsubsection{\texorpdfstring{SetSpeedPID()}{SetSpeedPID()}}
+{\footnotesize\ttfamily void Talon\+FXMotor\+::\+Set\+Speed\+PID (\begin{DoxyParamCaption}\item[{double}]{speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the speed of the motor using PID. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em speed} & The speed to ramp to \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_aab18866cd70caafc5a37f25287c79617}{Base\+Motor}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+motor/Talon\+FXMotor.\+hpp\end{DoxyCompactItemize}

@@ -3,6 +3,13 @@
 #include "BaseMotor.hpp"
 
 
+/**
+ @author Tyler Clarke
+ @version 1.0
+  
+ * Placebo motor - all the functions are empty. Useful if you want to... uh... actually I have no clue what it's useful for, but it seems useful.
+ */
+
 class PlaceboMotor : public BaseMotor{
 public: // Does NOTHING for now. Add printouts later, if necessary. It's a placebo!
     PlaceboMotor (int canID){
@@ -30,5 +37,11 @@ public: // Does NOTHING for now. Add printouts later, if necessary. It's a place
     }
 
     void SetSpeedPID(double speed){
+    }
+
+    void SetInverted(bool invert){
+    }
+
+    bool IsAtZero(){
     }
 };

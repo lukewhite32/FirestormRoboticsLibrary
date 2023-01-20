@@ -1,0 +1,179 @@
+\hypertarget{classSwerveModule}{}\doxysection{Swerve\+Module Class Reference}
+\label{classSwerveModule}\index{SwerveModule@{SwerveModule}}
+
+
+{\ttfamily \#include $<$Swerve\+Module.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classSwerveModule_a5744bc3c439cc4b90cfd10d5af805585}{Swerve\+Module}} (\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$speed\+Motor, \mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$direction\+Motor, int Can\+Coder\+ID, double offset, bool speed\+Inverted=false, bool direc\+Inverted=false)
+\item 
+void \mbox{\hyperlink{classSwerveModule_ac336353b37d16b7921e5c13b57c1563a}{Link}} (\mbox{\hyperlink{classSwerveModule}{Swerve\+Module}} $\ast$Link\+Swerve)
+\item 
+void \mbox{\hyperlink{classSwerveModule_a3cc54de63a8f78be5a6af50b26138800}{Set\+Direction}} (double target\+Pos)
+\item 
+void \mbox{\hyperlink{classSwerveModule_a5d5fef8502edf0fe560f47942bc02d19}{Move\+Percent}} (double spd, bool follow\+Link=true)
+\item 
+void \mbox{\hyperlink{classSwerveModule_a5ecdedd89946cad7ad41ec059b777307}{Apply\+Speed}} ()
+\item 
+long \mbox{\hyperlink{classSwerveModule_ad5f78073169c8d3cf784b1e81de042d3}{Get\+Direction}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$ \mbox{\hyperlink{classSwerveModule_acaad3c5b129137177d75a1c21bb4acf1}{speed}}
+\item 
+\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$ \mbox{\hyperlink{classSwerveModule_a1875a3509adf2998fa3f811edab72aab}{direction}}
+\item 
+\mbox{\hyperlink{classPIDController}{PIDController}} $\ast$ \mbox{\hyperlink{classSwerveModule_aea6c4d99c0c936b03b018630e561167c}{direction\+Controller}}
+\item 
+CANCoder $\ast$ \mbox{\hyperlink{classSwerveModule_a8c50e53d9557227894630274da5e5400}{cancoder}}
+\item 
+double \mbox{\hyperlink{classSwerveModule_aef319032713dea46e7f60f958e69c8b7}{cur\+Percent}}
+\item 
+\mbox{\hyperlink{classSwerveModule}{Swerve\+Module}} $\ast$ \mbox{\hyperlink{classSwerveModule_a43e6ad48d11a5a02161f259408a4cc1e}{link\+Swerve}}
+\item 
+bool \mbox{\hyperlink{classSwerveModule_a81ab11a766234109a502e8569a68ac55}{is\+Linked}} = false
+\item 
+double \mbox{\hyperlink{classSwerveModule_a034fdddd5ad098841698c4be71f8ab30}{encoder\+Offset}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Luke White and Tyler Clarke 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Swerve module for FRC. Manages 2 \doxylink{classBaseMotor}{Base\+Motor} pointers (which because of the polymorphism can be any motor type in FRC) 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classSwerveModule_a5744bc3c439cc4b90cfd10d5af805585}\label{classSwerveModule_a5744bc3c439cc4b90cfd10d5af805585}} 
+\index{SwerveModule@{SwerveModule}!SwerveModule@{SwerveModule}}
+\index{SwerveModule@{SwerveModule}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{SwerveModule()}{SwerveModule()}}
+{\footnotesize\ttfamily Swerve\+Module\+::\+Swerve\+Module (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$}]{speed\+Motor,  }\item[{\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$}]{direction\+Motor,  }\item[{int}]{Can\+Coder\+ID,  }\item[{double}]{offset,  }\item[{bool}]{speed\+Inverted = {\ttfamily false},  }\item[{bool}]{direc\+Inverted = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Constructor 
+\begin{DoxyParams}{Parameters}
+{\em speed\+Motor} & The motor to use for wheel speed control \\
+\hline
+{\em direction\+Motor} & The motor to use for wheel direction control \\
+\hline
+{\em Can\+Coder\+ID} & The CAN id of the CANCoder \\
+\hline
+{\em offset} & The offset of the wheel, in encoder ticks \\
+\hline
+{\em speed\+Inverted} & Whether or not to invert the wheel speed motor \\
+\hline
+{\em direc\+Inverted} & Whether or not to invert the wheel direction motor \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSwerveModule_a5ecdedd89946cad7ad41ec059b777307}\label{classSwerveModule_a5ecdedd89946cad7ad41ec059b777307}} 
+\index{SwerveModule@{SwerveModule}!ApplySpeed@{ApplySpeed}}
+\index{ApplySpeed@{ApplySpeed}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{ApplySpeed()}{ApplySpeed()}}
+{\footnotesize\ttfamily void Swerve\+Module\+::\+Apply\+Speed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Apply a percentage to the wheel motor \mbox{\Hypertarget{classSwerveModule_ad5f78073169c8d3cf784b1e81de042d3}\label{classSwerveModule_ad5f78073169c8d3cf784b1e81de042d3}} 
+\index{SwerveModule@{SwerveModule}!GetDirection@{GetDirection}}
+\index{GetDirection@{GetDirection}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{GetDirection()}{GetDirection()}}
+{\footnotesize\ttfamily long Swerve\+Module\+::\+Get\+Direction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the current (physical) direction of the module \mbox{\Hypertarget{classSwerveModule_ac336353b37d16b7921e5c13b57c1563a}\label{classSwerveModule_ac336353b37d16b7921e5c13b57c1563a}} 
+\index{SwerveModule@{SwerveModule}!Link@{Link}}
+\index{Link@{Link}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{Link()}{Link()}}
+{\footnotesize\ttfamily void Swerve\+Module\+::\+Link (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classSwerveModule}{Swerve\+Module}} $\ast$}]{Link\+Swerve }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Link to another swerve module 
+\begin{DoxyParams}{Parameters}
+{\em Link\+Swerve} & The swerve module to link to \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSwerveModule_a5d5fef8502edf0fe560f47942bc02d19}\label{classSwerveModule_a5d5fef8502edf0fe560f47942bc02d19}} 
+\index{SwerveModule@{SwerveModule}!MovePercent@{MovePercent}}
+\index{MovePercent@{MovePercent}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{MovePercent()}{MovePercent()}}
+{\footnotesize\ttfamily void Swerve\+Module\+::\+Move\+Percent (\begin{DoxyParamCaption}\item[{double}]{spd,  }\item[{bool}]{follow\+Link = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Increase the speed of the wheel motor 
+\begin{DoxyParams}{Parameters}
+{\em spd} & Percentage to add \\
+\hline
+{\em follow\+Link} & Whether or not to command the linked swerve module, if it exists \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classSwerveModule_a3cc54de63a8f78be5a6af50b26138800}\label{classSwerveModule_a3cc54de63a8f78be5a6af50b26138800}} 
+\index{SwerveModule@{SwerveModule}!SetDirection@{SetDirection}}
+\index{SetDirection@{SetDirection}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{SetDirection()}{SetDirection()}}
+{\footnotesize\ttfamily void Swerve\+Module\+::\+Set\+Direction (\begin{DoxyParamCaption}\item[{double}]{target\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the direction of the motor. 
+\begin{DoxyParams}{Parameters}
+{\em target\+Pos} & The encoder tick to aim for \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classSwerveModule_a8c50e53d9557227894630274da5e5400}\label{classSwerveModule_a8c50e53d9557227894630274da5e5400}} 
+\index{SwerveModule@{SwerveModule}!cancoder@{cancoder}}
+\index{cancoder@{cancoder}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{cancoder}{cancoder}}
+{\footnotesize\ttfamily CANCoder$\ast$ Swerve\+Module\+::cancoder\hspace{0.3cm}{\ttfamily [private]}}
+
+CANCoder to use for PID; heap allocated by an ID provided on construction. \mbox{\Hypertarget{classSwerveModule_aef319032713dea46e7f60f958e69c8b7}\label{classSwerveModule_aef319032713dea46e7f60f958e69c8b7}} 
+\index{SwerveModule@{SwerveModule}!curPercent@{curPercent}}
+\index{curPercent@{curPercent}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{curPercent}{curPercent}}
+{\footnotesize\ttfamily double Swerve\+Module\+::cur\+Percent\hspace{0.3cm}{\ttfamily [private]}}
+
+Current percentage that will be applied to the wheel \mbox{\Hypertarget{classSwerveModule_a1875a3509adf2998fa3f811edab72aab}\label{classSwerveModule_a1875a3509adf2998fa3f811edab72aab}} 
+\index{SwerveModule@{SwerveModule}!direction@{direction}}
+\index{direction@{direction}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{direction}{direction}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}$\ast$ Swerve\+Module\+::direction\hspace{0.3cm}{\ttfamily [private]}}
+
+Motor that controls the direction of the wheel \mbox{\Hypertarget{classSwerveModule_aea6c4d99c0c936b03b018630e561167c}\label{classSwerveModule_aea6c4d99c0c936b03b018630e561167c}} 
+\index{SwerveModule@{SwerveModule}!directionController@{directionController}}
+\index{directionController@{directionController}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{directionController}{directionController}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classPIDController}{PIDController}}$\ast$ Swerve\+Module\+::direction\+Controller\hspace{0.3cm}{\ttfamily [private]}}
+
+\doxylink{classPIDController}{PIDController} that manages the direction motor \mbox{\Hypertarget{classSwerveModule_a034fdddd5ad098841698c4be71f8ab30}\label{classSwerveModule_a034fdddd5ad098841698c4be71f8ab30}} 
+\index{SwerveModule@{SwerveModule}!encoderOffset@{encoderOffset}}
+\index{encoderOffset@{encoderOffset}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{encoderOffset}{encoderOffset}}
+{\footnotesize\ttfamily double Swerve\+Module\+::encoder\+Offset\hspace{0.3cm}{\ttfamily [private]}}
+
+Configured offset. \mbox{\Hypertarget{classSwerveModule_a81ab11a766234109a502e8569a68ac55}\label{classSwerveModule_a81ab11a766234109a502e8569a68ac55}} 
+\index{SwerveModule@{SwerveModule}!isLinked@{isLinked}}
+\index{isLinked@{isLinked}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{isLinked}{isLinked}}
+{\footnotesize\ttfamily bool Swerve\+Module\+::is\+Linked = false\hspace{0.3cm}{\ttfamily [private]}}
+
+Whether or not the \doxylink{classSwerveModule}{Swerve\+Module} is linked to another one. \mbox{\Hypertarget{classSwerveModule_a43e6ad48d11a5a02161f259408a4cc1e}\label{classSwerveModule_a43e6ad48d11a5a02161f259408a4cc1e}} 
+\index{SwerveModule@{SwerveModule}!linkSwerve@{linkSwerve}}
+\index{linkSwerve@{linkSwerve}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{linkSwerve}{linkSwerve}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classSwerveModule}{Swerve\+Module}}$\ast$ Swerve\+Module\+::link\+Swerve\hspace{0.3cm}{\ttfamily [private]}}
+
+Swerve\+Modules are a linked list! This means you can have any number of \textquotesingle{}em configured with separate offsets and command them all at once with a single call. \mbox{\Hypertarget{classSwerveModule_acaad3c5b129137177d75a1c21bb4acf1}\label{classSwerveModule_acaad3c5b129137177d75a1c21bb4acf1}} 
+\index{SwerveModule@{SwerveModule}!speed@{speed}}
+\index{speed@{speed}!SwerveModule@{SwerveModule}}
+\doxysubsubsection{\texorpdfstring{speed}{speed}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}$\ast$ Swerve\+Module\+::speed\hspace{0.3cm}{\ttfamily [private]}}
+
+Motor that controls the rotation of the wheel 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+swerve/Swerve\+Module.\+hpp\end{DoxyCompactItemize}

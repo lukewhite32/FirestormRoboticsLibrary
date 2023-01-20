@@ -1,0 +1,141 @@
+\hypertarget{PIDController_8hpp_source}{}\doxysection{PIDController.\+hpp}
+\label{PIDController_8hpp_source}\index{motor/PIDController.hpp@{motor/PIDController.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ By\ Tyler\ Clarke}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ PID\ controls\ for\ any\ conforming\ BaseMotor}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ This\ is\ entirely\ based\ off\ the\ code\ at\ https://docs.revrobotics.com/sparkmax/operating-\/modes/closed-\/loop-\/control,\ squeezed\ into\ a\ C++\ format}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}BaseMotor.hpp"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <frc/Timer.h>}}
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{double}\ smartLoop(\textcolor{keywordtype}{double}\ pos,\ \textcolor{keywordtype}{double}\ round\ =\ 4096)\{}
+\DoxyCodeLine{00018\ \ \ \textcolor{keywordflow}{while}\ (pos\ >\ round)\{}
+\DoxyCodeLine{00019\ \ \ \ \ pos\ -\/=\ round;}
+\DoxyCodeLine{00020\ \ \ \}}
+\DoxyCodeLine{00021\ \ \ \textcolor{keywordflow}{while}\ (pos\ <\ 0)\{}
+\DoxyCodeLine{00022\ \ \ \ \ pos\ +=\ round;}
+\DoxyCodeLine{00023\ \ \ \}}
+\DoxyCodeLine{00024\ \ \ \textcolor{keywordflow}{return}\ pos;}
+\DoxyCodeLine{00025\ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structPIDConstants}{PIDConstants}}\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{double}\ P\ =\ 0;\ \textcolor{comment}{//\ Defaults:\ configure\ it\ yourself\ if\ you\ want\ it\ to\ run}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{double}\ I\ =\ 0;}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{double}\ D\ =\ 0;}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{double}\ F\ =\ 0;}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{double}\ iZone\ =\ 0;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{double}\ MinOutput\ =\ -\/1;}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{double}\ MaxOutput\ =\ 1;}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classPIDController}{PIDController}}\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{classBaseMotor}{BaseMotor}}*\ \mbox{\hyperlink{classPIDController_a7ef68cdaf546a225c6f41632a2fb49b3}{motor}};}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPIDController_a8cb565aa86e31cde944b3e9b360dd624}{lastTime}};}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{classPIDController_a6f2945c61f58293a5a9bf7c48ad636fd}{hz}};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPIDController_aae9ec8a0d8b1e5c1689da05f713ff597}{setPoint}}\ =\ 0;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPIDController_a28d3b85e96e3c0e92b21a6c6cb37518d}{previousError}}\ =\ 0;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPIDController_a5437b8e5db1716d63c898f8371ae691f}{iState}}\ =\ 0;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPIDController_afa3411e56d3b6f3ebaca24202cab90b6}{curPos}};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classPIDController_ae22b3f021913dd34271604d5b5f8d5f8}{rotationLength}}\ =\ -\/1;\ \textcolor{comment}{//\ -\/1\ =\ no\ looping}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPIDController_a0242475e85279ba7050e44e55903f2ec}{loopize}}(\textcolor{keywordtype}{double}\ set,\ \textcolor{keywordtype}{double}\ cur)\{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (std::abs(set\ -\/\ cur)\ >=\ \mbox{\hyperlink{classPIDController_ae22b3f021913dd34271604d5b5f8d5f8}{rotationLength}}/2)\{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (set\ >\ cur)\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/(\mbox{\hyperlink{classPIDController_ae22b3f021913dd34271604d5b5f8d5f8}{rotationLength}}\ -\/\ set\ +\ cur);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPIDController_ae22b3f021913dd34271604d5b5f8d5f8}{rotationLength}}\ -\/\ cur\ +\ set;}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ set\ -\/\ cur;}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ \ \ \ \ \}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPIDController_ace726a5f6748cc847abacba118d72bb7}{getError}}(\textcolor{keywordtype}{double}\ set,\ \textcolor{keywordtype}{double}\ cur)\{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classPIDController_ae22b3f021913dd34271604d5b5f8d5f8}{rotationLength}}\ ==\ -\/1)\{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ set\ -\/\ cur;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classPIDController_a0242475e85279ba7050e44e55903f2ec}{loopize}}(set,\ cur);}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classPIDController_afa5803d1578df73891c65038db1d7343}{DoMath}}(\textcolor{keywordtype}{double}\ FE)\{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ error\ =\ \mbox{\hyperlink{classPIDController_ace726a5f6748cc847abacba118d72bb7}{getError}}(\mbox{\hyperlink{classPIDController_aae9ec8a0d8b1e5c1689da05f713ff597}{setPoint}},\ \mbox{\hyperlink{classPIDController_afa3411e56d3b6f3ebaca24202cab90b6}{curPos}});}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ p\ =\ error\ *\ \mbox{\hyperlink{classPIDController_a6eb0be86071705afa4d787dace9d252d}{constants}}.P;\ \textcolor{comment}{//\ This\ does\ not\ need\ to\ be\ adjusted\ for\ FE}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (fabs(error)\ <=\ \mbox{\hyperlink{classPIDController_a6eb0be86071705afa4d787dace9d252d}{constants}}.iZone\ ||\ \mbox{\hyperlink{classPIDController_a6eb0be86071705afa4d787dace9d252d}{constants}}.iZone\ ==\ 0)\{\ \textcolor{comment}{//\ no\ clue,\ I'm\ basically\ copy\ pasting.\ looks\ like\ IZone\ is\ a\ "{}zone"{}\ in\ which\ the\ I\ coefficient\ applies.}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPIDController_a5437b8e5db1716d63c898f8371ae691f}{iState}}\ +=\ (error\ *\ \mbox{\hyperlink{classPIDController_a6eb0be86071705afa4d787dace9d252d}{constants}}.I)\ *\ FE;\ \textcolor{comment}{//\ *FE\ means\ that,\ if\ error\ *\ constants.I\ is\ 2,\ it\ will\ only\ actually\ gain\ 2\ after\ 1\ second/hz\ is\ passed.\ (20\ ms\ by\ default).\ This\ keeps\ it\ smooth.}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ This\ kind\ of\ thing\ is\ used\ all\ throughout\ platformer;\ very\ tested\ and\ stable}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPIDController_a5437b8e5db1716d63c898f8371ae691f}{iState}}\ =\ 0;}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ d\ =\ (error\ -\/\ \mbox{\hyperlink{classPIDController_a28d3b85e96e3c0e92b21a6c6cb37518d}{previousError}});\ \textcolor{comment}{//\ Not\ really\ sure\ how\ this\ can\ be\ related\ to\ FE;\ I\ suppose\ I'll\ just\ leave\ it\ how\ it\ is\ and\ work\ it\ out\ later.}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPIDController_a28d3b85e96e3c0e92b21a6c6cb37518d}{previousError}}\ =\ error;}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ d\ *=\ \mbox{\hyperlink{classPIDController_a6eb0be86071705afa4d787dace9d252d}{constants}}.D;}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ f\ =\ \mbox{\hyperlink{classPIDController_aae9ec8a0d8b1e5c1689da05f713ff597}{setPoint}}\ *\ \mbox{\hyperlink{classPIDController_a6eb0be86071705afa4d787dace9d252d}{constants}}.F;}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ p\ +\ \mbox{\hyperlink{classPIDController_a5437b8e5db1716d63c898f8371ae691f}{iState}}\ +\ d\ +\ f;}
+\DoxyCodeLine{00155\ \ \ \ \ \}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00161\ \ \ \ \ \mbox{\hyperlink{structPIDConstants}{PIDConstants}}\ \mbox{\hyperlink{classPIDController_a6eb0be86071705afa4d787dace9d252d}{constants}};}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPIDController_af7833b338221c38125afeeab9486cc89}{SetCircumference}}(\textcolor{keywordtype}{long}\ circumference)\{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPIDController_ae22b3f021913dd34271604d5b5f8d5f8}{rotationLength}}\ =\ circumference;}
+\DoxyCodeLine{00169\ \ \ \ \ \}}
+\DoxyCodeLine{00170\ \ \ \ \ }
+\DoxyCodeLine{00176\ \ \ \ \ \mbox{\hyperlink{classPIDController_a805965a8d2277c261c8d0f9e23c7e6a3}{PIDPositionController}}\ (\mbox{\hyperlink{classBaseMotor}{BaseMotor}}*\ m,\ \textcolor{keywordtype}{float}\ frequency\ =\ 50)\{\ \textcolor{comment}{//\ Update\ at\ 50\ hz\ by\ default}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPIDController_a7ef68cdaf546a225c6f41632a2fb49b3}{motor}}\ =\ m;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPIDController_a6f2945c61f58293a5a9bf7c48ad636fd}{hz}}\ =\ frequency;}
+\DoxyCodeLine{00179\ \ \ \ \ \}}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPIDController_a05d1a51dbe23f22cdd85304537e7466f}{Update}}()\{\ \textcolor{comment}{//\ Call\ synchronously\ at\ any\ frequency,\ this\ uses\ Math\ (tm)\ to\ adjust\ for\ it}}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Pass\ in\ a\ current\ position\ argument\ to\ Update\ if\ you\ like\ that,\ or\ just\ let\ it\ figure\ it\ out\ from\ the\ motor\ encoder\ (see:\ very\ cool\ piece\ of\ code)}}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPIDController_a05d1a51dbe23f22cdd85304537e7466f}{Update}}(\mbox{\hyperlink{classPIDController_a7ef68cdaf546a225c6f41632a2fb49b3}{motor}}\ -\/>\ GetPosition());}
+\DoxyCodeLine{00187\ \ \ \ \ \}}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPIDController_a3cb59608438ff30f2ecb2f387be97514}{Update}}(\textcolor{keywordtype}{double}\ cPos)\{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPIDController_afa3411e56d3b6f3ebaca24202cab90b6}{curPos}}\ =\ cPos;}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ secsElapsed\ =\ (double)frc::Timer::GetFPGATimestamp()\ -\/\ \mbox{\hyperlink{classPIDController_a8cb565aa86e31cde944b3e9b360dd624}{lastTime}};}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ FE\ =\ secsElapsed\ /\ \mbox{\hyperlink{classPIDController_a6f2945c61f58293a5a9bf7c48ad636fd}{hz}};\ \textcolor{comment}{//\ This\ is\ a\ trick\ from\ my\ online\ game.\ Measures\ elapsed\ time\ and\ converts\ it\ to\ number\ of\ ticks\ it\ needs\ to\ "{}draw"{}!}}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ roborio\ has\ at\ least\ a\ few\ mhz\ so\ this\ will\ almost\ never\ be\ >1,\ and\ will\ probably\ hover\ <0.1\ most\ of\ the\ time.}}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ We\ can\ set\ up\ SmartDashboard\ to\ track\ it\ for\ performance\ metrics,\ if\ it\ becomes\ necessary}}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ ret\ =\ \mbox{\hyperlink{classPIDController_afa5803d1578df73891c65038db1d7343}{DoMath}}(FE);}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ret\ >\ \mbox{\hyperlink{classPIDController_a6eb0be86071705afa4d787dace9d252d}{constants}}.MaxOutput)\{}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ ret\ =\ \mbox{\hyperlink{classPIDController_a6eb0be86071705afa4d787dace9d252d}{constants}}.MaxOutput;}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (ret\ <\ \mbox{\hyperlink{classPIDController_a6eb0be86071705afa4d787dace9d252d}{constants}}.MinOutput)\{}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ ret\ =\ \mbox{\hyperlink{classPIDController_a6eb0be86071705afa4d787dace9d252d}{constants}}.MinOutput;}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPIDController_a7ef68cdaf546a225c6f41632a2fb49b3}{motor}}\ -\/>\ SetPercent(ret);}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPIDController_a8cb565aa86e31cde944b3e9b360dd624}{lastTime}}\ =\ (double)frc::Timer::GetFPGATimestamp();}
+\DoxyCodeLine{00209\ \ \ \ \ \}}
+\DoxyCodeLine{00210\ }
+\DoxyCodeLine{00215\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classPIDController_af11eac60e38291727aa7a6fde37cd605}{IsAtTarget}}(\textcolor{keywordtype}{double}\ margin)\{}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{classPIDController_afa3411e56d3b6f3ebaca24202cab90b6}{curPos}}\ >\ \mbox{\hyperlink{classPIDController_aae9ec8a0d8b1e5c1689da05f713ff597}{setPoint}}\ -\/\ margin)\ \&\&\ (\mbox{\hyperlink{classPIDController_afa3411e56d3b6f3ebaca24202cab90b6}{curPos}}\ <\ \mbox{\hyperlink{classPIDController_aae9ec8a0d8b1e5c1689da05f713ff597}{setPoint}}\ +\ margin))\{}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00220\ \ \ \ \ \}}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00226\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classPIDController_a3b6d6b200685b809fe344a7e50523a82}{SetPosition}}(\textcolor{keywordtype}{double}\ pos)\{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classPIDController_aae9ec8a0d8b1e5c1689da05f713ff597}{setPoint}}\ =\ pos;}
+\DoxyCodeLine{00228\ \ \ \ \ \}}
+\DoxyCodeLine{00229\ \};}
+
+\end{DoxyCode}

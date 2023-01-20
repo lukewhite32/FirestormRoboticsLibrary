@@ -1,0 +1,20 @@
+\hypertarget{conceptRobotModeType}{}\doxysection{Robot\+Mode\+Type Concept Reference}
+\label{conceptRobotModeType}\index{RobotModeType@{RobotModeType}}
+
+
+{\ttfamily \#include $<$Awesome\+Robot\+Base.\+hpp$>$}
+
+\doxysubsection{Concept definition}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{template}<\textcolor{keyword}{typename}\ T>}
+\DoxyCodeLine{\textcolor{keyword}{concept\ }\mbox{\hyperlink{conceptRobotModeType}{RobotModeType}}\ =\ \ std::is\_base\_of\ <RobotMode,\ T>::value}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tyler Clarke
+\end{DoxyAuthor}
+Concept for robot modes. It\textquotesingle{}s a c++20 feature that allows us to template in the mode types, initialize them, and call functions on them. Really, really powerful. I recommend reading up on it. 

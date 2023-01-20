@@ -1,0 +1,83 @@
+\hypertarget{SwerveModule_8hpp_source}{}\doxysection{Swerve\+Module.\+hpp}
+\label{SwerveModule_8hpp_source}\index{swerve/SwerveModule.hpp@{swerve/SwerveModule.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ By\ Luke\ White\ and\ Tyler\ Clarke}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ Custom\ swerve\ module\ library\ using\ PIDController.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Note:\ This\ and\ PIDController.hpp\ need\ some\ more\ cleanup\ work.}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <FRL/motor/BaseMotor.hpp>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <ctre/Phoenix.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <FRL/motor/PIDController.hpp>}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSwerveModule}{SwerveModule}}\ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classBaseMotor}{BaseMotor}}*\ \mbox{\hyperlink{classSwerveModule_acaad3c5b129137177d75a1c21bb4acf1}{speed}};}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{classBaseMotor}{BaseMotor}}*\ \mbox{\hyperlink{classSwerveModule_a1875a3509adf2998fa3f811edab72aab}{direction}};}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{classPIDController}{PIDController}}*\ \mbox{\hyperlink{classSwerveModule_aea6c4d99c0c936b03b018630e561167c}{directionController}};}
+\DoxyCodeLine{00035\ \ \ \ \ CANCoder*\ \mbox{\hyperlink{classSwerveModule_a8c50e53d9557227894630274da5e5400}{cancoder}};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSwerveModule_aef319032713dea46e7f60f958e69c8b7}{curPercent}};\ \textcolor{comment}{//\ So\ multiple\ commands\ can\ alter\ speed}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \mbox{\hyperlink{classSwerveModule}{SwerveModule}}*\ \mbox{\hyperlink{classSwerveModule_a43e6ad48d11a5a02161f259408a4cc1e}{linkSwerve}};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classSwerveModule_a81ab11a766234109a502e8569a68ac55}{isLinked}}\ =\ \textcolor{keyword}{false};\ \ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSwerveModule_a034fdddd5ad098841698c4be71f8ab30}{encoderOffset}};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{classSwerveModule_a5744bc3c439cc4b90cfd10d5af805585}{SwerveModule}}(\mbox{\hyperlink{classBaseMotor}{BaseMotor}}*\ speedMotor,\ \mbox{\hyperlink{classBaseMotor}{BaseMotor}}*\ directionMotor,\ \textcolor{keywordtype}{int}\ CanCoderID,\ \textcolor{keywordtype}{double}\ offset,\ \textcolor{keywordtype}{bool}\ speedInverted=\textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ direcInverted=\textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_a034fdddd5ad098841698c4be71f8ab30}{encoderOffset}}\ =\ offset;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Swerve:\ "{}}\ <<\ speedID\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ directionIdentifier\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ CanCoderID\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ roll\ <<\ std::endl;}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_acaad3c5b129137177d75a1c21bb4acf1}{speed}}\ =\ speedMotor;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_a1875a3509adf2998fa3f811edab72aab}{direction}}\ =\ directionMotor;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_a8c50e53d9557227894630274da5e5400}{cancoder}}\ =\ \textcolor{keyword}{new}\ CANCoder\ \{CanCoderID\};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_aea6c4d99c0c936b03b018630e561167c}{directionController}}\ =\ \textcolor{keyword}{new}\ PIDPositionController\ (\mbox{\hyperlink{classSwerveModule_a1875a3509adf2998fa3f811edab72aab}{direction}});}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_aea6c4d99c0c936b03b018630e561167c}{directionController}}\ -\/>\ constants.P\ =\ 0.0005;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{comment}{//directionController\ -\/>\ constants.I\ =\ 0.0001;}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_aea6c4d99c0c936b03b018630e561167c}{directionController}}\ -\/>\ constants.MaxOutput\ =\ 0.2;}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_aea6c4d99c0c936b03b018630e561167c}{directionController}}\ -\/>\ constants.MinOutput\ =\ -\/0.2;}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_aea6c4d99c0c936b03b018630e561167c}{directionController}}\ -\/>\ SetCircumference(4096);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_acaad3c5b129137177d75a1c21bb4acf1}{speed}}\ -\/>\ SetInverted(speedInverted);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_a1875a3509adf2998fa3f811edab72aab}{direction}}\ -\/>\ SetInverted(direcInverted);}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwerveModule_ac336353b37d16b7921e5c13b57c1563a}{Link}}(\mbox{\hyperlink{classSwerveModule}{SwerveModule}}*\ LinkSwerve)\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_a81ab11a766234109a502e8569a68ac55}{isLinked}}\ =\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_a43e6ad48d11a5a02161f259408a4cc1e}{linkSwerve}}\ =\ LinkSwerve;\ }
+\DoxyCodeLine{00092\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwerveModule_a3cc54de63a8f78be5a6af50b26138800}{SetDirection}}(\textcolor{keywordtype}{double}\ targetPos)\ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_aea6c4d99c0c936b03b018630e561167c}{directionController}}\ -\/>\ SetPosition(targetPos);}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_aea6c4d99c0c936b03b018630e561167c}{directionController}}\ -\/>\ Update(GetAbsoluteCANCoderPos());}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSwerveModule_a81ab11a766234109a502e8569a68ac55}{isLinked}})\{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_a43e6ad48d11a5a02161f259408a4cc1e}{linkSwerve}}\ -\/>\ SetDirectionAngle(targetPos);}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwerveModule_a5d5fef8502edf0fe560f47942bc02d19}{MovePercent}}(\textcolor{keywordtype}{double}\ spd,\ \textcolor{keywordtype}{bool}\ followLink\ =\ \textcolor{keyword}{true})\{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_aef319032713dea46e7f60f958e69c8b7}{curPercent}}\ +=\ spd;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSwerveModule_a81ab11a766234109a502e8569a68ac55}{isLinked}}\ \&\&\ followLink)\{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_a43e6ad48d11a5a02161f259408a4cc1e}{linkSwerve}}\ -\/>\ \mbox{\hyperlink{classSwerveModule_a5d5fef8502edf0fe560f47942bc02d19}{MovePercent}}(spd);}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ \ \ \ \ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSwerveModule_a5ecdedd89946cad7ad41ec059b777307}{ApplySpeed}}()\{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_acaad3c5b129137177d75a1c21bb4acf1}{speed}}\ -\/>\ SetPercent(\mbox{\hyperlink{classSwerveModule_aef319032713dea46e7f60f958e69c8b7}{curPercent}});}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_aef319032713dea46e7f60f958e69c8b7}{curPercent}}\ =\ 0;\ \textcolor{comment}{//\ Velocity\ ain't\ "{}sticky"{},\ this\ is\ a\ safety\ thing}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{classSwerveModule_a81ab11a766234109a502e8569a68ac55}{isLinked}})\{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classSwerveModule_a43e6ad48d11a5a02161f259408a4cc1e}{linkSwerve}}\ -\/>\ \mbox{\hyperlink{classSwerveModule_a5ecdedd89946cad7ad41ec059b777307}{ApplySpeed}}();}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \}\ }
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00132\ \ \ \ \ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{classSwerveModule_ad5f78073169c8d3cf784b1e81de042d3}{GetDirection}}()\ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ smartLoop(\mbox{\hyperlink{classSwerveModule_a8c50e53d9557227894630274da5e5400}{cancoder}}\ -\/>\ GetAbsolutePosition()\ -\/\ \mbox{\hyperlink{classSwerveModule_a034fdddd5ad098841698c4be71f8ab30}{encoderOffset}});}
+\DoxyCodeLine{00134\ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \};}
+
+\end{DoxyCode}

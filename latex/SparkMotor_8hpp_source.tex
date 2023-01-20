@@ -1,0 +1,73 @@
+\hypertarget{SparkMotor_8hpp_source}{}\doxysection{Spark\+Motor.\+hpp}
+\label{SparkMotor_8hpp_source}\index{motor/SparkMotor.hpp@{motor/SparkMotor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Spark\ MAX\ motor;\ can\ be\ used\ as\ a\ BaseMotor.\ */}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <rev/CANSparkMax.h>}\ \textcolor{comment}{/*\ Requires\ REVLib\ */}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}BaseMotor.hpp"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct__SparkMotorEncoderControlContainer}{\_SparkMotorEncoderControlContainer}}\{}
+\DoxyCodeLine{00009\ \ \ \ \ rev::SparkMaxRelativeEncoder\ encoder;}
+\DoxyCodeLine{00010\ \ \ \ \ rev::SparkMaxPIDController\ pid;}
+\DoxyCodeLine{00011\ \};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSparkMotor}{SparkMotor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classBaseMotor}{BaseMotor}}\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{struct__SparkMotorEncoderControlContainer}{\_SparkMotorEncoderControlContainer}}*\ controls;}
+\DoxyCodeLine{00023\ \ \ \ \ rev::CANSparkMax*\ spark;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classSparkMotor}{SparkMotor}}(\textcolor{keywordtype}{int}\ canID)\{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ spark\ =\ \textcolor{keyword}{new}\ rev::CANSparkMax\ (canID,\ rev::CANSparkMax::MotorType::kBrushless);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ controls\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{struct__SparkMotorEncoderControlContainer}{\_SparkMotorEncoderControlContainer}}\ \{spark\ -\/>\ GetEncoder(),\ spark\ -\/>\ GetPIDController()\};}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSparkMotor_a65e8433e4ad11168e3b88d0dc99ffed3}{SetInverted}}(\textcolor{keywordtype}{bool}\ invert)\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ spark\ -\/>\ \mbox{\hyperlink{classSparkMotor_a65e8433e4ad11168e3b88d0dc99ffed3}{SetInverted}}(invert);}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSparkMotor_a87f4ff11208ad88af44c3772de28cbe2}{SetPercent}}(\textcolor{keywordtype}{double}\ percent)\{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ spark\ -\/>\ Set(percent);}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSparkMotor_abb1b4d3d0b7b7845a7787a5cf7347895}{SetP}}(\textcolor{keywordtype}{double}\ kP)\{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ controls\ -\/>\ pid.SetP(kP);}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSparkMotor_ae0426789f18d222fa074e49ee61f57af}{SetI}}(\textcolor{keywordtype}{double}\ kI)\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ controls\ -\/>\ pid.SetI(kI);}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSparkMotor_a9b39ba1614489127f7cd083d93b97751}{SetD}}(\textcolor{keywordtype}{double}\ kD)\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ controls\ -\/>\ pid.SetD(kD);}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSparkMotor_ac030ccd17486f9bfe6a37a9d47d45dc0}{SetF}}(\textcolor{keywordtype}{double}\ kF)\{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ controls\ -\/>\ pid.SetFF(kF);}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSparkMotor_a9ef711a7e37bf8241a6a22cccd62332c}{SetOutputRange}}(\textcolor{keywordtype}{double}\ kPeakOF,\ \textcolor{keywordtype}{double}\ kPeakOR,\ \textcolor{keywordtype}{double}\ kNominalOF\ =\ 0,\ \textcolor{keywordtype}{double}\ kNominalOR\ =\ 0)\{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ controls\ -\/>\ pid.SetOutputRange(kPeakOR,\ kPeakOF);\ \textcolor{comment}{//\ Ignore\ nominal\ values;\ this\ is\ Spark.}}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSparkMotor_a926d155ba73d4f8ce6debf4fe53e5193}{GetPosition}}()\ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ controls\ -\/>\ encoder.GetPosition();}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classSparkMotor_a496b95849d3d780ee32ee14bc4d0ee7a}{GetVelocity}}()\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ controls\ -\/>\ encoder.GetVelocity();}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSparkMotor_a4c971c204c975fd8a0037ceffdfaf39f}{SetPositionPID}}(\textcolor{keywordtype}{double}\ position)\{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ controls\ -\/>\ pid.SetReference(position,\ rev::CANSparkMax::ControlType::kPosition);}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classSparkMotor_a0d9407ef9e4e0b0c55b1f5c5b9d1bf00}{SetSpeedPID}}(\textcolor{keywordtype}{double}\ speed)\{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ controls\ -\/>\ pid.SetReference(speed,\ rev::CANSparkMax::ControlType::kVelocity);}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \};}
+
+\end{DoxyCode}

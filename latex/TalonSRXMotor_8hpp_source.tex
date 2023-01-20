@@ -1,0 +1,91 @@
+\hypertarget{TalonSRXMotor_8hpp_source}{}\doxysection{Talon\+SRXMotor.\+hpp}
+\label{TalonSRXMotor_8hpp_source}\index{motor/TalonSRXMotor.hpp@{motor/TalonSRXMotor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ Talon\ SRX\ motor;\ can\ be\ used\ as\ a\ BaseMotor.\ */}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <ctre/Phoenix.h>}\ \textcolor{comment}{/*\ Requires\ Phoenix\ along\ with\ this\ vendordep\ */}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <BaseMotor.hpp>}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTalonSRXMotor}{TalonSRXMotor}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classBaseMotor}{BaseMotor}}\{}
+\DoxyCodeLine{00017\ \ \ \ \ TalonSRX*\ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}};}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor}{TalonSRXMotor}}\ (\textcolor{keywordtype}{int}\ canID)\{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ =\ \textcolor{keyword}{new}\ TalonSRX(canID);}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor}{\string~TalonSRXMotor}}\ ()\{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keyword}{delete}\ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}};}
+\DoxyCodeLine{00025\ \ \ \ \ \}}
+\DoxyCodeLine{00026\ \ \ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classTalonSRXMotor_a713a250f111bbccc57cf5b68adfb42ff}{SetInverted}}(\textcolor{keywordtype}{bool}\ invert)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ \mbox{\hyperlink{classTalonSRXMotor_a713a250f111bbccc57cf5b68adfb42ff}{SetInverted}}(invert);}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonSRXMotor_abbc62740c09718edbe69fb6a89ed89d9}{SetPercent}}(\textcolor{keywordtype}{double}\ speed)\{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (speed\ <\ 0)\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ \mbox{\hyperlink{classTalonSRXMotor_a713a250f111bbccc57cf5b68adfb42ff}{SetInverted}}(!invert);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ \mbox{\hyperlink{classTalonSRXMotor_a713a250f111bbccc57cf5b68adfb42ff}{SetInverted}}(invert);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ Set(ControlMode::PercentOutput,\ speed);}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonSRXMotor_a39ceda723f9dd9fb06821741ebf146f8}{SetP}}(\textcolor{keywordtype}{double}\ kP)\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ Config\_kP(0,\ kP);}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonSRXMotor_a28782ab8b89a47068dc015bef17d36ca}{SetI}}(\textcolor{keywordtype}{double}\ kI)\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ Config\_kI(0,\ kI);}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonSRXMotor_a29b5dd1a09ed5ea01a21ddbe54943fff}{SetD}}(\textcolor{keywordtype}{double}\ kD)\{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ Config\_kD(0,\ kD);}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonSRXMotor_aef7ea0004df6cf8045d6aba7058a783a}{SetF}}(\textcolor{keywordtype}{double}\ kF)\{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ Config\_kF(0,\ kF);}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonSRXMotor_ac44f935162b12933417bc5dbad4bfbc1}{SetOutputRange}}(\textcolor{keywordtype}{double}\ kPeakOF,\ \textcolor{keywordtype}{double}\ kPeakOR,\ \textcolor{keywordtype}{double}\ kNominalOF\ =\ 0,\ \textcolor{keywordtype}{double}\ kNominalOR\ =\ 0)\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ ConfigPeakOutputForward(kPeakOF);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ ConfigPeakOutputReverse(kPeakOR);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ ConfigNominalOutputForward(kNominalOF);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ ConfigNominalOutputReverse(kNominalOR);}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonSRXMotor_aafc0d726a1643c4a872f5662891ca1fa}{SetPositionPID}}(\textcolor{keywordtype}{double}\ position)\{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (position\ <\ 0)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ \mbox{\hyperlink{classTalonSRXMotor_a713a250f111bbccc57cf5b68adfb42ff}{SetInverted}}(!invert);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ \mbox{\hyperlink{classTalonSRXMotor_a713a250f111bbccc57cf5b68adfb42ff}{SetInverted}}(invert);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ Set(ControlMode::Position,\ position);}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonSRXMotor_a0bd2b64b23dd352cb9ea1342f98791da}{SetSpeedPID}}(\textcolor{keywordtype}{double}\ speed)\{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (speed\ <\ 0)\ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ \mbox{\hyperlink{classTalonSRXMotor_a713a250f111bbccc57cf5b68adfb42ff}{SetInverted}}(!invert);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ \mbox{\hyperlink{classTalonSRXMotor_a713a250f111bbccc57cf5b68adfb42ff}{SetInverted}}(invert);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ Set(ControlMode::Velocity,\ speed);}
+\DoxyCodeLine{00085\ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classTalonSRXMotor_ab7beb5b1f4a219500390a4db89054b64}{GetPosition}}()\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ GetSelectedSensorPosition();}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classTalonSRXMotor_a1288322b0d893bb995ed874c059e1931}{GetVelocity}}()\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classTalonSRXMotor_a743d977a2d1ef1917421ef78eb2f8c34}{talon}}\ -\/>\ GetSelectedSensorVelocity();}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \};}
+
+\end{DoxyCode}

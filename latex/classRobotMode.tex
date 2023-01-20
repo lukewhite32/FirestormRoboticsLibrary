@@ -1,0 +1,106 @@
+\hypertarget{classRobotMode}{}\doxysection{Robot\+Mode Class Reference}
+\label{classRobotMode}\index{RobotMode@{RobotMode}}
+
+
+{\ttfamily \#include $<$Awesome\+Robot\+Base.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classRobotMode_acaf6db413909122cf6a07721e926f0ef}{Init}} ()
+\item 
+virtual void \mbox{\hyperlink{classRobotMode_afb835e0d2dea1fb9565d5f7e7414db5f}{Start}} ()
+\item 
+virtual void \mbox{\hyperlink{classRobotMode_a80816838e8df14d04c4ad28115e9d296}{Synchronous}} ()
+\item 
+virtual void \mbox{\hyperlink{classRobotMode_ad722d225b8e2d92d9b42487a81e46025}{Thread}} ()
+\item 
+virtual void \mbox{\hyperlink{classRobotMode_a5b1c94303b8c1853fc067943723ee725}{End}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{classRobotMode_a2fc1b636ee6db74b85132597de090e0f}{hz}} = 50
+\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{classRobotMode_a4b9a7b96533619a5a436a81132b7f4c1}{no\+Thread}} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tyler Clarke 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Base class for all robot operation modes. Subclass this for autonomous, teleop, test, and disabled modes in a robot; \doxylink{classAwesomeRobot}{Awesome\+Robot} uses templating magic to use your code. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classRobotMode_a5b1c94303b8c1853fc067943723ee725}\label{classRobotMode_a5b1c94303b8c1853fc067943723ee725}} 
+\index{RobotMode@{RobotMode}!End@{End}}
+\index{End@{End}!RobotMode@{RobotMode}}
+\doxysubsubsection{\texorpdfstring{End()}{End()}}
+{\footnotesize\ttfamily virtual void Robot\+Mode\+::\+End (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Override to clean-\/up.
+
+Called when the current mode exits -\/ e.\+g. going from autonomous to teleoperated, or disabling the robot. \mbox{\Hypertarget{classRobotMode_acaf6db413909122cf6a07721e926f0ef}\label{classRobotMode_acaf6db413909122cf6a07721e926f0ef}} 
+\index{RobotMode@{RobotMode}!Init@{Init}}
+\index{Init@{Init}!RobotMode@{RobotMode}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily virtual void Robot\+Mode\+::\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Override this as your initial setup.
+
+Called once when the robot program starts. \mbox{\Hypertarget{classRobotMode_afb835e0d2dea1fb9565d5f7e7414db5f}\label{classRobotMode_afb835e0d2dea1fb9565d5f7e7414db5f}} 
+\index{RobotMode@{RobotMode}!Start@{Start}}
+\index{Start@{Start}!RobotMode@{RobotMode}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily virtual void Robot\+Mode\+::\+Start (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Override this as your setup function.
+
+Called every time the robot is enabled to the mode -\/ e.\+g. going to teleoperated from autonomous, or enabling teleoperated. \mbox{\Hypertarget{classRobotMode_a80816838e8df14d04c4ad28115e9d296}\label{classRobotMode_a80816838e8df14d04c4ad28115e9d296}} 
+\index{RobotMode@{RobotMode}!Synchronous@{Synchronous}}
+\index{Synchronous@{Synchronous}!RobotMode@{RobotMode}}
+\doxysubsubsection{\texorpdfstring{Synchronous()}{Synchronous()}}
+{\footnotesize\ttfamily virtual void Robot\+Mode\+::\+Synchronous (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Override this for a synchronized mainloop.
+
+Called every {\itshape synchronous} tick -\/ equivalent to the Loop functions in \doxylink{classModularRobot}{Modular\+Robot}. \mbox{\Hypertarget{classRobotMode_ad722d225b8e2d92d9b42487a81e46025}\label{classRobotMode_ad722d225b8e2d92d9b42487a81e46025}} 
+\index{RobotMode@{RobotMode}!Thread@{Thread}}
+\index{Thread@{Thread}!RobotMode@{RobotMode}}
+\doxysubsubsection{\texorpdfstring{Thread()}{Thread()}}
+{\footnotesize\ttfamily virtual void Robot\+Mode\+::\+Thread (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Override this for code that needs to run asynchronously at hz.
+
+Called asynchronously at a frequency -\/ safe to have infinite loops, because it\textquotesingle{}s killed on end MEMORY SAFETY NOTE\+: BECAUSE THIS CAN BE CANCELED AT ANY TIME, NEVER ALLOCATE NEW MEMORY INSIDE IT! A MEMORY LEAK WILL OCCUR! Even if memory is freed in \doxylink{classRobotMode_a5b1c94303b8c1853fc067943723ee725}{End()}, being killed during a malloc() can leave the internal linked-\/list of free memory blocks in an \char`\"{}inconsistent state\char`\"{}, which could potentially crash the entire process -\/ maybe even force a kernel panic on the Robo\+Rio. Lots of bad things happen when you play with memory inside threads, no matter what.
+
+BUG NOTE\+: There is a chance the CTRE and Rev libraries will allocate memory on callug notes to their libraries. If they do, we might start seeing a stream of seemingly random segfaults (or even kernel panics). That is probably caused by bad Care Of Memory.
+
+Okayish safety solution\+: Use \doxylink{classRobotMode_afb835e0d2dea1fb9565d5f7e7414db5f}{Start()} and the constructor and the default constructors to allocate everything, and do nothing but call safe or safe-\/ish functions here. Good safety solution\+: don\textquotesingle{}t ever directly call library functions in this thread, and instead use std\+::atomics to store things like motor speeds, to be updated synchronously.
+
+It is safe to use infinite while loops in here! The thread handling intentionally permits it. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classRobotMode_a2fc1b636ee6db74b85132597de090e0f}\label{classRobotMode_a2fc1b636ee6db74b85132597de090e0f}} 
+\index{RobotMode@{RobotMode}!hz@{hz}}
+\index{hz@{hz}!RobotMode@{RobotMode}}
+\doxysubsubsection{\texorpdfstring{hz}{hz}}
+{\footnotesize\ttfamily float Robot\+Mode\+::hz = 50}
+
+Speed in hertz that the thread updates at. \mbox{\Hypertarget{classRobotMode_a4b9a7b96533619a5a436a81132b7f4c1}\label{classRobotMode_a4b9a7b96533619a5a436a81132b7f4c1}} 
+\index{RobotMode@{RobotMode}!noThread@{noThread}}
+\index{noThread@{noThread}!RobotMode@{RobotMode}}
+\doxysubsubsection{\texorpdfstring{noThread}{noThread}}
+{\footnotesize\ttfamily std\+::atomic$<$bool$>$ Robot\+Mode\+::no\+Thread = false}
+
+Whether or not the thread is enabled.
+
+This is a formality only; it is unlikely to ever find use. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+bases/Awesome\+Robot\+Base.\+hpp\end{DoxyCompactItemize}

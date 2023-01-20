@@ -1,0 +1,70 @@
+\hypertarget{classPIDPositionController}{}\doxysection{PIDPosition\+Controller Class Reference}
+\label{classPIDPositionController}\index{PIDPositionController@{PIDPositionController}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPIDPositionController_a2a2a6e629e98a4cc6fbbea4cdfe3fc7d}\label{classPIDPositionController_a2a2a6e629e98a4cc6fbbea4cdfe3fc7d}} 
+void {\bfseries Set\+Circumference} (long circumference)
+\item 
+\mbox{\Hypertarget{classPIDPositionController_aed888fb943dae74bf9567ac4be0dd086}\label{classPIDPositionController_aed888fb943dae74bf9567ac4be0dd086}} 
+{\bfseries PIDPosition\+Controller} (\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$m, float frequency=50)
+\item 
+\mbox{\Hypertarget{classPIDPositionController_a7ea1b54b3da759d55b02d3b1cd901617}\label{classPIDPositionController_a7ea1b54b3da759d55b02d3b1cd901617}} 
+void {\bfseries Update} ()
+\item 
+\mbox{\Hypertarget{classPIDPositionController_af381d8a94f580c6174760c7420ae6946}\label{classPIDPositionController_af381d8a94f580c6174760c7420ae6946}} 
+void {\bfseries Update} (double c\+Pos)
+\item 
+\mbox{\Hypertarget{classPIDPositionController_ac7fe9dc3371e4f5aa7b87193fec9728d}\label{classPIDPositionController_ac7fe9dc3371e4f5aa7b87193fec9728d}} 
+void {\bfseries Set\+Position} (double pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPIDPositionController_a5b659d89a4ceae4644c6ad058f736bab}\label{classPIDPositionController_a5b659d89a4ceae4644c6ad058f736bab}} 
+\mbox{\hyperlink{structPIDConstants}{PIDConstants}} {\bfseries constants}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPIDPositionController_a2d5d8f1837cf6527ef21e248d720b31f}\label{classPIDPositionController_a2d5d8f1837cf6527ef21e248d720b31f}} 
+double {\bfseries loopize} (double set, double cur)
+\item 
+\mbox{\Hypertarget{classPIDPositionController_aa6cc57891625d2618118da24c40c51ba}\label{classPIDPositionController_aa6cc57891625d2618118da24c40c51ba}} 
+double {\bfseries get\+Error} (double set, double cur)
+\item 
+\mbox{\Hypertarget{classPIDPositionController_a3227619d3b847a9d907a10e4dc0f83f2}\label{classPIDPositionController_a3227619d3b847a9d907a10e4dc0f83f2}} 
+double {\bfseries Do\+Math} (double FE)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPIDPositionController_a3c6ba74bb8d4a2c379e53be95ce947fd}\label{classPIDPositionController_a3c6ba74bb8d4a2c379e53be95ce947fd}} 
+\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$ {\bfseries motor}
+\item 
+\mbox{\Hypertarget{classPIDPositionController_a01e26e3c03efd80163982a69387bcd2f}\label{classPIDPositionController_a01e26e3c03efd80163982a69387bcd2f}} 
+double {\bfseries last\+Time}
+\item 
+\mbox{\Hypertarget{classPIDPositionController_aefd9225ecd1dc533e9b36f508de3bd0c}\label{classPIDPositionController_aefd9225ecd1dc533e9b36f508de3bd0c}} 
+float {\bfseries hz}
+\item 
+\mbox{\Hypertarget{classPIDPositionController_a606958165efba3aefd7ab1009b449b94}\label{classPIDPositionController_a606958165efba3aefd7ab1009b449b94}} 
+double {\bfseries set\+Point} = 0
+\item 
+\mbox{\Hypertarget{classPIDPositionController_ab3e76362506e7cc12704edae3cbc80f6}\label{classPIDPositionController_ab3e76362506e7cc12704edae3cbc80f6}} 
+double {\bfseries previous\+Error} = 0
+\item 
+\mbox{\Hypertarget{classPIDPositionController_a23883426f60d17666a3b55a9fc99e78e}\label{classPIDPositionController_a23883426f60d17666a3b55a9fc99e78e}} 
+double {\bfseries i\+State} = 0
+\item 
+\mbox{\Hypertarget{classPIDPositionController_a2597adc3ac7a751090850eb61375f6ab}\label{classPIDPositionController_a2597adc3ac7a751090850eb61375f6ab}} 
+double {\bfseries cur\+Pos}
+\item 
+\mbox{\Hypertarget{classPIDPositionController_a67d4f9fab4b511c1c02689156fe32711}\label{classPIDPositionController_a67d4f9fab4b511c1c02689156fe32711}} 
+long {\bfseries rotation\+Length} = -\/1
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+motor/PIDController.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,249 @@
+\hypertarget{classSparkMotor}{}\doxysection{Spark\+Motor Class Reference}
+\label{classSparkMotor}\index{SparkMotor@{SparkMotor}}
+
+
+{\ttfamily \#include $<$Spark\+Motor.\+hpp$>$}
+
+Inheritance diagram for Spark\+Motor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSparkMotor}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSparkMotor_a0e9649f13ef4ca97eb2e25121b3de5a5}\label{classSparkMotor_a0e9649f13ef4ca97eb2e25121b3de5a5}} 
+{\bfseries Spark\+Motor} (int can\+ID)
+\item 
+void \mbox{\hyperlink{classSparkMotor_a65e8433e4ad11168e3b88d0dc99ffed3}{Set\+Inverted}} (bool invert)
+\item 
+void \mbox{\hyperlink{classSparkMotor_a87f4ff11208ad88af44c3772de28cbe2}{Set\+Percent}} (double percent)
+\item 
+void \mbox{\hyperlink{classSparkMotor_abb1b4d3d0b7b7845a7787a5cf7347895}{SetP}} (double kP)
+\item 
+void \mbox{\hyperlink{classSparkMotor_ae0426789f18d222fa074e49ee61f57af}{SetI}} (double kI)
+\item 
+void \mbox{\hyperlink{classSparkMotor_a9b39ba1614489127f7cd083d93b97751}{SetD}} (double kD)
+\item 
+void \mbox{\hyperlink{classSparkMotor_ac030ccd17486f9bfe6a37a9d47d45dc0}{SetF}} (double kF)
+\item 
+void \mbox{\hyperlink{classSparkMotor_a9ef711a7e37bf8241a6a22cccd62332c}{Set\+Output\+Range}} (double k\+Peak\+OF, double k\+Peak\+OR, double k\+Nominal\+OF=0, double k\+Nominal\+OR=0)
+\item 
+double \mbox{\hyperlink{classSparkMotor_a926d155ba73d4f8ce6debf4fe53e5193}{Get\+Position}} ()
+\item 
+double \mbox{\hyperlink{classSparkMotor_a496b95849d3d780ee32ee14bc4d0ee7a}{Get\+Velocity}} ()
+\item 
+void \mbox{\hyperlink{classSparkMotor_a4c971c204c975fd8a0037ceffdfaf39f}{Set\+Position\+PID}} (double position)
+\item 
+void \mbox{\hyperlink{classSparkMotor_a0d9407ef9e4e0b0c55b1f5c5b9d1bf00}{Set\+Speed\+PID}} (double speed)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_a61e487fddfbc270084284518470352e4}{Set\+Percent}} (double percent)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_adad95b74354e664d84113308c9db10e6}{Set\+Inverted}} (bool invert)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_aab8429fbe1317f1f0989524d0f99f0bc}{SetP}} (double kP)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_acd5e4478b4329fc341a8cf9a8957c6c7}{SetI}} (double kI)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_aba3832517f84b4a1f070dff92440422f}{SetD}} (double kD)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_a5eb4d772595a2cdf402e45e00b733aae}{SetF}} (double kF)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_aa025c0d9ad078567d03224193516ed29}{Set\+Output\+Range}} (double k\+Peak\+OF, double k\+Peak\+OR, double k\+Nominal\+OF, double k\+Nominal\+OR)=0
+\item 
+virtual double \mbox{\hyperlink{classBaseMotor_aebe865d9924792c55113031218e6b3c4}{Get\+Position}} ()=0
+\item 
+virtual double \mbox{\hyperlink{classBaseMotor_a6f452dd523c244b4c63282d1bdd967a6}{Get\+Velocity}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_a09ead7a8b2876c3177a0258c5608d357}{Set\+Position\+PID}} (double position)=0
+\item 
+virtual void \mbox{\hyperlink{classBaseMotor_aab18866cd70caafc5a37f25287c79617}{Set\+Speed\+PID}} (double speed)=0
+\item 
+bool \mbox{\hyperlink{classBaseMotor_a0d530a9b0ff528db37733320f22366d3}{Is\+At\+Zero}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSparkMotor_a6198d43aeefb68a6a2657ceb038776f8}\label{classSparkMotor_a6198d43aeefb68a6a2657ceb038776f8}} 
+\mbox{\hyperlink{struct__SparkMotorEncoderControlContainer}{\+\_\+\+Spark\+Motor\+Encoder\+Control\+Container}} $\ast$ {\bfseries controls}
+\item 
+\mbox{\Hypertarget{classSparkMotor_ad6388839c56c0aa9b6ecbcad9a824278}\label{classSparkMotor_ad6388839c56c0aa9b6ecbcad9a824278}} 
+rev\+::\+CANSpark\+Max $\ast$ {\bfseries spark}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tyler Clarke and Luke White 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Motor wrapper for Spark Max. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSparkMotor_a926d155ba73d4f8ce6debf4fe53e5193}\label{classSparkMotor_a926d155ba73d4f8ce6debf4fe53e5193}} 
+\index{SparkMotor@{SparkMotor}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily double Spark\+Motor\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Return the encoder position of the motor. 
+
+Implements \mbox{\hyperlink{classBaseMotor_aebe865d9924792c55113031218e6b3c4}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a496b95849d3d780ee32ee14bc4d0ee7a}\label{classSparkMotor_a496b95849d3d780ee32ee14bc4d0ee7a}} 
+\index{SparkMotor@{SparkMotor}!GetVelocity@{GetVelocity}}
+\index{GetVelocity@{GetVelocity}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{GetVelocity()}{GetVelocity()}}
+{\footnotesize\ttfamily double Spark\+Motor\+::\+Get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Return the encoder velocity of the motor. 
+
+Implements \mbox{\hyperlink{classBaseMotor_a6f452dd523c244b4c63282d1bdd967a6}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a9b39ba1614489127f7cd083d93b97751}\label{classSparkMotor_a9b39ba1614489127f7cd083d93b97751}} 
+\index{SparkMotor@{SparkMotor}!SetD@{SetD}}
+\index{SetD@{SetD}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetD()}{SetD()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+SetD (\begin{DoxyParamCaption}\item[{double}]{kD }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the PIDF \char`\"{}\+D\char`\"{} coefficient. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em kD} & The D coefficient \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_aba3832517f84b4a1f070dff92440422f}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_ac030ccd17486f9bfe6a37a9d47d45dc0}\label{classSparkMotor_ac030ccd17486f9bfe6a37a9d47d45dc0}} 
+\index{SparkMotor@{SparkMotor}!SetF@{SetF}}
+\index{SetF@{SetF}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetF()}{SetF()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+SetF (\begin{DoxyParamCaption}\item[{double}]{kF }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the PIDF \char`\"{}\+F\char`\"{} coefficient. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em kF} & The F coefficient \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_a5eb4d772595a2cdf402e45e00b733aae}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_ae0426789f18d222fa074e49ee61f57af}\label{classSparkMotor_ae0426789f18d222fa074e49ee61f57af}} 
+\index{SparkMotor@{SparkMotor}!SetI@{SetI}}
+\index{SetI@{SetI}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetI()}{SetI()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+SetI (\begin{DoxyParamCaption}\item[{double}]{kI }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the PIDF \char`\"{}\+I\char`\"{} coefficient. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em kI} & The I coefficient. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_acd5e4478b4329fc341a8cf9a8957c6c7}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a65e8433e4ad11168e3b88d0dc99ffed3}\label{classSparkMotor_a65e8433e4ad11168e3b88d0dc99ffed3}} 
+\index{SparkMotor@{SparkMotor}!SetInverted@{SetInverted}}
+\index{SetInverted@{SetInverted}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetInverted()}{SetInverted()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+Set\+Inverted (\begin{DoxyParamCaption}\item[{bool}]{invert }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the invertion state of the motor 
+\begin{DoxyParams}{Parameters}
+{\em percent} & The percentage of total power to run at. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_adad95b74354e664d84113308c9db10e6}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a9ef711a7e37bf8241a6a22cccd62332c}\label{classSparkMotor_a9ef711a7e37bf8241a6a22cccd62332c}} 
+\index{SparkMotor@{SparkMotor}!SetOutputRange@{SetOutputRange}}
+\index{SetOutputRange@{SetOutputRange}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetOutputRange()}{SetOutputRange()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+Set\+Output\+Range (\begin{DoxyParamCaption}\item[{double}]{k\+Peak\+OF,  }\item[{double}]{k\+Peak\+OR,  }\item[{double}]{k\+Nominal\+OF = {\ttfamily 0},  }\item[{double}]{k\+Nominal\+OR = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the PIDF output range. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em k\+Peak\+OF} & The maximum forward output \\
+\hline
+{\em k\+Peak\+OR} & The maximum reverse output \\
+\hline
+{\em k\+Nominal\+OF} & The \char`\"{}nominal\char`\"{} forward output \\
+\hline
+{\em k\+Nominal\+OR} & the \char`\"{}nominal\char`\"{} reverse output \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_aa025c0d9ad078567d03224193516ed29}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_abb1b4d3d0b7b7845a7787a5cf7347895}\label{classSparkMotor_abb1b4d3d0b7b7845a7787a5cf7347895}} 
+\index{SparkMotor@{SparkMotor}!SetP@{SetP}}
+\index{SetP@{SetP}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetP()}{SetP()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+SetP (\begin{DoxyParamCaption}\item[{double}]{kP }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the PIDF \char`\"{}\+P\char`\"{} coefficient. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em kP} & The P coefficient. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_aab8429fbe1317f1f0989524d0f99f0bc}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a87f4ff11208ad88af44c3772de28cbe2}\label{classSparkMotor_a87f4ff11208ad88af44c3772de28cbe2}} 
+\index{SparkMotor@{SparkMotor}!SetPercent@{SetPercent}}
+\index{SetPercent@{SetPercent}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetPercent()}{SetPercent()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+Set\+Percent (\begin{DoxyParamCaption}\item[{double}]{percent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the motor to a percentage value. Range (-\/1, 1) of max power. 
+
+Implements \mbox{\hyperlink{classBaseMotor_a61e487fddfbc270084284518470352e4}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a4c971c204c975fd8a0037ceffdfaf39f}\label{classSparkMotor_a4c971c204c975fd8a0037ceffdfaf39f}} 
+\index{SparkMotor@{SparkMotor}!SetPositionPID@{SetPositionPID}}
+\index{SetPositionPID@{SetPositionPID}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetPositionPID()}{SetPositionPID()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+Set\+Position\+PID (\begin{DoxyParamCaption}\item[{double}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the position of the motor using PID. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em position} & The position to move to \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_a09ead7a8b2876c3177a0258c5608d357}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a0d9407ef9e4e0b0c55b1f5c5b9d1bf00}\label{classSparkMotor_a0d9407ef9e4e0b0c55b1f5c5b9d1bf00}} 
+\index{SparkMotor@{SparkMotor}!SetSpeedPID@{SetSpeedPID}}
+\index{SetSpeedPID@{SetSpeedPID}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetSpeedPID()}{SetSpeedPID()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+Set\+Speed\+PID (\begin{DoxyParamCaption}\item[{double}]{speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Set the speed of the motor using PID. Manufacturer software differences mean that this shouldn\textquotesingle{}t be used! Instead, use \doxylink{classPIDController}{PIDController}. 
+\begin{DoxyParams}{Parameters}
+{\em speed} & The speed to ramp to \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classBaseMotor_aab18866cd70caafc5a37f25287c79617}{Base\+Motor}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+motor/Spark\+Motor.\+hpp\end{DoxyCompactItemize}

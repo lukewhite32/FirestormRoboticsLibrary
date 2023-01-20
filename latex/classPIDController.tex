@@ -1,0 +1,236 @@
+\hypertarget{classPIDController}{}\doxysection{PIDController Class Reference}
+\label{classPIDController}\index{PIDController@{PIDController}}
+
+
+{\ttfamily \#include $<$PIDController.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classPIDController_af7833b338221c38125afeeab9486cc89}{Set\+Circumference}} (long circumference)
+\item 
+\mbox{\hyperlink{classPIDController_a805965a8d2277c261c8d0f9e23c7e6a3}{PIDPosition\+Controller}} (\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$m, float frequency=50)
+\item 
+void \mbox{\hyperlink{classPIDController_a05d1a51dbe23f22cdd85304537e7466f}{Update}} ()
+\item 
+void \mbox{\hyperlink{classPIDController_a3cb59608438ff30f2ecb2f387be97514}{Update}} (double c\+Pos)
+\item 
+bool \mbox{\hyperlink{classPIDController_af11eac60e38291727aa7a6fde37cd605}{Is\+At\+Target}} (double margin)
+\item 
+void \mbox{\hyperlink{classPIDController_a3b6d6b200685b809fe344a7e50523a82}{Set\+Position}} (double pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structPIDConstants}{PIDConstants}} \mbox{\hyperlink{classPIDController_a6eb0be86071705afa4d787dace9d252d}{constants}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{classPIDController_a0242475e85279ba7050e44e55903f2ec}{loopize}} (double set, double cur)
+\item 
+double \mbox{\hyperlink{classPIDController_ace726a5f6748cc847abacba118d72bb7}{get\+Error}} (double set, double cur)
+\item 
+double \mbox{\hyperlink{classPIDController_afa5803d1578df73891c65038db1d7343}{Do\+Math}} (double FE)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$ \mbox{\hyperlink{classPIDController_a7ef68cdaf546a225c6f41632a2fb49b3}{motor}}
+\item 
+double \mbox{\hyperlink{classPIDController_a8cb565aa86e31cde944b3e9b360dd624}{last\+Time}}
+\item 
+float \mbox{\hyperlink{classPIDController_a6f2945c61f58293a5a9bf7c48ad636fd}{hz}}
+\item 
+double \mbox{\hyperlink{classPIDController_aae9ec8a0d8b1e5c1689da05f713ff597}{set\+Point}} = 0
+\item 
+double \mbox{\hyperlink{classPIDController_a28d3b85e96e3c0e92b21a6c6cb37518d}{previous\+Error}} = 0
+\item 
+double \mbox{\hyperlink{classPIDController_a5437b8e5db1716d63c898f8371ae691f}{i\+State}} = 0
+\item 
+double \mbox{\hyperlink{classPIDController_afa3411e56d3b6f3ebaca24202cab90b6}{cur\+Pos}}
+\item 
+long \mbox{\hyperlink{classPIDController_ae22b3f021913dd34271604d5b5f8d5f8}{rotation\+Length}} = -\/1
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Tyler Clarke 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 Class that controls any \doxylink{classBaseMotor}{Base\+Motor} for PID.
+\end{DoxyVersion}
+Tune coefficients by altering the constants property directly.
+
+Only for controlling positions at the moment -\/ speed coming soon. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classPIDController_afa5803d1578df73891c65038db1d7343}\label{classPIDController_afa5803d1578df73891c65038db1d7343}} 
+\index{PIDController@{PIDController}!DoMath@{DoMath}}
+\index{DoMath@{DoMath}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{DoMath()}{DoMath()}}
+{\footnotesize\ttfamily double PIDController\+::\+Do\+Math (\begin{DoxyParamCaption}\item[{double}]{FE }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Do PID math given a number of ticks elapsed since last update.
+
+This way the end result is always the same no matter what the frequency of the processor. 
+\begin{DoxyParams}{Parameters}
+{\em FE} & Number of ticks elapsed since last update. This is a reference to the similar code in \href{https://linuxrocks2000.github.io/platformer/platformer-game}{\texttt{ Platformer}}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPIDController_ace726a5f6748cc847abacba118d72bb7}\label{classPIDController_ace726a5f6748cc847abacba118d72bb7}} 
+\index{PIDController@{PIDController}!getError@{getError}}
+\index{getError@{getError}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{getError()}{getError()}}
+{\footnotesize\ttfamily double PIDController\+::get\+Error (\begin{DoxyParamCaption}\item[{double}]{set,  }\item[{double}]{cur }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Returns a classically calculated error if the \doxylink{classPIDController}{PIDController} is not configured to loop-\/around, otherwise returns the output of loopize.
+
+Only used internally. 
+\begin{DoxyParams}{Parameters}
+{\em set} & The setpoint \\
+\hline
+{\em cur} & The current position \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPIDController_af11eac60e38291727aa7a6fde37cd605}\label{classPIDController_af11eac60e38291727aa7a6fde37cd605}} 
+\index{PIDController@{PIDController}!IsAtTarget@{IsAtTarget}}
+\index{IsAtTarget@{IsAtTarget}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{IsAtTarget()}{IsAtTarget()}}
+{\footnotesize\ttfamily bool PIDController\+::\+Is\+At\+Target (\begin{DoxyParamCaption}\item[{double}]{margin }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return true if it (the motor) has reached a previously assigned target 
+\begin{DoxyParams}{Parameters}
+{\em margin} & Acceptable error margin \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPIDController_a0242475e85279ba7050e44e55903f2ec}\label{classPIDController_a0242475e85279ba7050e44e55903f2ec}} 
+\index{PIDController@{PIDController}!loopize@{loopize}}
+\index{loopize@{loopize}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{loopize()}{loopize()}}
+{\footnotesize\ttfamily double PIDController\+::loopize (\begin{DoxyParamCaption}\item[{double}]{set,  }\item[{double}]{cur }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Calculate error between a setpoint and current position {\itshape based on the fact that there are always 2 ways to reach any given point on a circle}.
+
+Used internally only. 
+\begin{DoxyParams}{Parameters}
+{\em set} & The setpoint \\
+\hline
+{\em cur} & The current position \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPIDController_a805965a8d2277c261c8d0f9e23c7e6a3}\label{classPIDController_a805965a8d2277c261c8d0f9e23c7e6a3}} 
+\index{PIDController@{PIDController}!PIDPositionController@{PIDPositionController}}
+\index{PIDPositionController@{PIDPositionController}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{PIDPositionController()}{PIDPositionController()}}
+{\footnotesize\ttfamily PIDController\+::\+PIDPosition\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$}]{m,  }\item[{float}]{frequency = {\ttfamily 50} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construct the PIDPosition\+Controller 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \doxylink{classBaseMotor}{Base\+Motor} object to control \\
+\hline
+{\em frequency} & The frequency to update PID at. Larger frequencies will result in faster PID code. Default is 50 hz. This is really just here to set a good speed baseline for PID control, but it can also be a quick way to increase ramp speed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPIDController_af7833b338221c38125afeeab9486cc89}\label{classPIDController_af7833b338221c38125afeeab9486cc89}} 
+\index{PIDController@{PIDController}!SetCircumference@{SetCircumference}}
+\index{SetCircumference@{SetCircumference}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{SetCircumference()}{SetCircumference()}}
+{\footnotesize\ttfamily void PIDController\+::\+Set\+Circumference (\begin{DoxyParamCaption}\item[{long}]{circumference }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Turn on looping-\/mode and set the circumference of one \char`\"{}circle\char`\"{} 
+\begin{DoxyParams}{Parameters}
+{\em circumference} & The circumference to loop around \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPIDController_a3b6d6b200685b809fe344a7e50523a82}\label{classPIDController_a3b6d6b200685b809fe344a7e50523a82}} 
+\index{PIDController@{PIDController}!SetPosition@{SetPosition}}
+\index{SetPosition@{SetPosition}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{SetPosition()}{SetPosition()}}
+{\footnotesize\ttfamily void PIDController\+::\+Set\+Position (\begin{DoxyParamCaption}\item[{double}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the position setpoint 
+\begin{DoxyParams}{Parameters}
+{\em pos} & The position to ramp up towards \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classPIDController_a05d1a51dbe23f22cdd85304537e7466f}\label{classPIDController_a05d1a51dbe23f22cdd85304537e7466f}} 
+\index{PIDController@{PIDController}!Update@{Update}}
+\index{Update@{Update}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void PIDController\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Update the motor. This is actually just an overload that calls \doxylink{classPIDController_a3cb59608438ff30f2ecb2f387be97514}{Update(double)} with a value from the motor\textquotesingle{}s encoder. \mbox{\Hypertarget{classPIDController_a3cb59608438ff30f2ecb2f387be97514}\label{classPIDController_a3cb59608438ff30f2ecb2f387be97514}} 
+\index{PIDController@{PIDController}!Update@{Update}}
+\index{Update@{Update}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void PIDController\+::\+Update (\begin{DoxyParamCaption}\item[{double}]{c\+Pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Update the motor with a current position specified. Call periodically. The hz-\/smoothing algorithm means the frequency doesn\textquotesingle{}t matter too much, but try to call it at least as many times per second as the frequency, and preferably not too many more. The algorithm breaks down at the extremes. Call without parameters to use the motor\textquotesingle{}s encoder; pass in a value to use an external encoder. Good for controlling a Neo with a CANCoder (which is literally exactly what we\textquotesingle{}re doing). 
+\begin{DoxyParams}{Parameters}
+{\em c\+Pos} & Current position to base PID calculations on \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classPIDController_a6eb0be86071705afa4d787dace9d252d}\label{classPIDController_a6eb0be86071705afa4d787dace9d252d}} 
+\index{PIDController@{PIDController}!constants@{constants}}
+\index{constants@{constants}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{constants}{constants}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structPIDConstants}{PIDConstants}} PIDController\+::constants}
+
+Constants for PID. \mbox{\Hypertarget{classPIDController_afa3411e56d3b6f3ebaca24202cab90b6}\label{classPIDController_afa3411e56d3b6f3ebaca24202cab90b6}} 
+\index{PIDController@{PIDController}!curPos@{curPos}}
+\index{curPos@{curPos}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{curPos}{curPos}}
+{\footnotesize\ttfamily double PIDController\+::cur\+Pos\hspace{0.3cm}{\ttfamily [private]}}
+
+Current position. Assigned in Update and used mostly for semantic purposes. \mbox{\Hypertarget{classPIDController_a6f2945c61f58293a5a9bf7c48ad636fd}\label{classPIDController_a6f2945c61f58293a5a9bf7c48ad636fd}} 
+\index{PIDController@{PIDController}!hz@{hz}}
+\index{hz@{hz}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{hz}{hz}}
+{\footnotesize\ttfamily float PIDController\+::hz\hspace{0.3cm}{\ttfamily [private]}}
+
+Frequency to update at. \mbox{\Hypertarget{classPIDController_a5437b8e5db1716d63c898f8371ae691f}\label{classPIDController_a5437b8e5db1716d63c898f8371ae691f}} 
+\index{PIDController@{PIDController}!iState@{iState}}
+\index{iState@{iState}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{iState}{iState}}
+{\footnotesize\ttfamily double PIDController\+::i\+State = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+Integral state. Added to motor output speed. This accumulates over time, so the motor accelerates. \mbox{\Hypertarget{classPIDController_a8cb565aa86e31cde944b3e9b360dd624}\label{classPIDController_a8cb565aa86e31cde944b3e9b360dd624}} 
+\index{PIDController@{PIDController}!lastTime@{lastTime}}
+\index{lastTime@{lastTime}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{lastTime}{lastTime}}
+{\footnotesize\ttfamily double PIDController\+::last\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+Timestamp at the last update \mbox{\Hypertarget{classPIDController_a7ef68cdaf546a225c6f41632a2fb49b3}\label{classPIDController_a7ef68cdaf546a225c6f41632a2fb49b3}} 
+\index{PIDController@{PIDController}!motor@{motor}}
+\index{motor@{motor}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{motor}{motor}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}$\ast$ PIDController\+::motor\hspace{0.3cm}{\ttfamily [private]}}
+
+Motor to control \mbox{\Hypertarget{classPIDController_a28d3b85e96e3c0e92b21a6c6cb37518d}\label{classPIDController_a28d3b85e96e3c0e92b21a6c6cb37518d}} 
+\index{PIDController@{PIDController}!previousError@{previousError}}
+\index{previousError@{previousError}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{previousError}{previousError}}
+{\footnotesize\ttfamily double PIDController\+::previous\+Error = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+Last recorded error (needed for D term calculation) \mbox{\Hypertarget{classPIDController_ae22b3f021913dd34271604d5b5f8d5f8}\label{classPIDController_ae22b3f021913dd34271604d5b5f8d5f8}} 
+\index{PIDController@{PIDController}!rotationLength@{rotationLength}}
+\index{rotationLength@{rotationLength}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{rotationLength}{rotationLength}}
+{\footnotesize\ttfamily long PIDController\+::rotation\+Length = -\/1\hspace{0.3cm}{\ttfamily [private]}}
+
+Length of one rotation, if you\textquotesingle{}re looping around a circle. \mbox{\Hypertarget{classPIDController_aae9ec8a0d8b1e5c1689da05f713ff597}\label{classPIDController_aae9ec8a0d8b1e5c1689da05f713ff597}} 
+\index{PIDController@{PIDController}!setPoint@{setPoint}}
+\index{setPoint@{setPoint}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{setPoint}{setPoint}}
+{\footnotesize\ttfamily double PIDController\+::set\+Point = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+Target position 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+motor/PIDController.\+hpp\end{DoxyCompactItemize}

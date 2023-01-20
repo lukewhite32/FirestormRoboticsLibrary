@@ -11,20 +11,23 @@ struct _SparkMotorEncoderControlContainer{
 };
 
 
+/**
+ @author Tyler Clarke and Luke White
+ @version 1.0
+
+ * Motor wrapper for Spark Max.
+ */
 class SparkMotor : public BaseMotor {
 public:
     _SparkMotorEncoderControlContainer* controls;
     rev::CANSparkMax* spark;
-    
-    bool invert = false;
 
     SparkMotor(int canID){
         spark = new rev::CANSparkMax (canID, rev::CANSparkMax::MotorType::kBrushless);
         controls = new _SparkMotorEncoderControlContainer {spark -> GetEncoder(), spark -> GetPIDController()};
     }
 
-    void setInverted() {
-        invert =! invert;
+    void SetInverted(bool invert) {
         spark -> SetInverted(invert);
     }
     
@@ -66,9 +69,5 @@ public:
 
     void SetSpeedPID(double speed){
         controls -> pid.SetReference(speed, rev::CANSparkMax::ControlType::kVelocity);
-    }
-        
-    bool isAtZero() {
-        return GetPosition() == 0;
     }
 };

@@ -5,6 +5,11 @@
 #include <ctre/Phoenix.h> /* Requires Phoenix along with this vendordep */
 #include <BaseMotor.hpp>
 
+/**
+ @author Tyler Clarke and Luke White
+ @version 1.0
+ * Talon FX Motor wrapper.
+ */
 
 class TalonFXMotor : public BaseMotor{
     TalonFX* talon;
@@ -26,8 +31,8 @@ public:
         talon -> Set(ControlMode::PercentOutput, speed);
     }
 
-    void setInverted() {
-        invert =! invert;
+    void SetInverted(bool doInv) {
+        invert = doInv;
     }
     
     void SetP(double kP){
@@ -87,9 +92,5 @@ public:
     
     void SetZeroEncoder() {
         talon -> SetSelectedSensorPosition(0);
-    }
-    
-    bool IsAtZero() {
-        return GetPosition() == 0;
     }
 };

@@ -5,27 +5,65 @@
 
 #pragma once
 
-#include "SparkMax.hpp"
+#include <FRL/motor/BaseMotor.hpp>
 #include <ctre/Phoenix.h>
 #include <iostream>
-#include "motor/PIDController.hpp"
+#include <FRL/motor/PIDController.hpp>
 
-
+/**
+ @author Luke White and Tyler Clarke
+ @version 1.0
+ 
+ * Swerve module for FRC. Manages 2 BaseMotor pointers (which because of the polymorphism can be any motor type in FRC)
+ */
 class SwerveModule {
+    /**
+     * Motor that controls the rotation of the wheel
+     */
     BaseMotor* speed;
+    /**
+     * Motor that controls the direction of the wheel
+     */
     BaseMotor* direction;
-    PIDPositionController* directionController;
+    /**
+     * PIDController that manages the direction motor
+     */
+    PIDController* directionController;
+    /**
+     * CANCoder to use for PID; heap allocated by an ID provided on construction.
+     */
     CANCoder* cancoder;
 
+    /**
+     * Current percentage that will be applied to the wheel
+     */
     double curPercent; // So multiple commands can alter speed
-    
-    bool isLinked = false;  
-   
+       
+    /**
+     * SwerveModules are a linked list! This means you can have any number of 'em configured with separate offsets and command them all at once with a single call.
+     */
     SwerveModule* linkSwerve;
 
-    double encoderOffset; // Being CTRE their calibration code doesn't work. Like, at all. So this is the "custom" version.
+    /**
+     * Whether or not the SwerveModule is linked to another one.
+     */
+    bool isLinked = false;  
+
+    /**
+     * Configured offset.
+     */
+    double encoderOffset;
 
 public:
+    /**
+     * Constructor
+     @param speedMotor The motor to use for wheel speed control
+     @param directionMotor The motor to use for wheel direction control
+     @param CanCoderID The CAN id of the CANCoder
+     @param offset The offset of the wheel, in encoder ticks
+     @param speedInverted Whether or not to invert the wheel speed motor
+     @param direcInverted Whether or not to invert the wheel direction motor
+     */
     SwerveModule(BaseMotor* speedMotor, BaseMotor* directionMotor, int CanCoderID, double offset, bool speedInverted=false, bool direcInverted=false) {
         encoderOffset = offset;
         std::cout << "Swerve: " << speedID << ", " << directionIdentifier << ", " << CanCoderID << ", " << roll << std::endl;
@@ -40,25 +78,23 @@ public:
         directionController -> constants.MinOutput = -0.2;
         directionController -> SetCircumference(4096);
         
-        if (speedInverted) {
-            speed -> setInverted(true);
-        }
-        else{
-            speed -> setInverted(false);
-        }
-        if (direcInverted) {
-            direction -> setInverted(true);
-        }
-        else{
-            direction -> setInverted(false);
-        }
+        speed -> SetInverted(speedInverted);
+        direction -> SetInverted(direcInverted);
     }
     
+    /**
+     * Link to another swerve module
+     @param LinkSwerve The swerve module to link to
+     */
     void Link(SwerveModule* LinkSwerve) {
         isLinked = true;           
         linkSwerve = LinkSwerve; 
     }
 
+    /**
+     * Set the direction of the motor.
+     @param targetPos The encoder tick to aim for
+     */
     void SetDirection(double targetPos) {
         directionController -> SetPosition(targetPos);
         directionController -> Update(GetAbsoluteCANCoderPos());
@@ -67,6 +103,11 @@ public:
         }
     }
 
+    /**
+     Increase the speed of the wheel motor
+     @param spd Percentage to add
+     @param followLink Whether or not to command the linked swerve module, if it exists
+     */
     void MovePercent(double spd, bool followLink = true){
         curPercent += spd;
         if (isLinked && followLink){
@@ -74,6 +115,9 @@ public:
         }
     }
 
+    /**
+     Apply a percentage to the wheel motor
+     */
     void ApplySpeed(){
         speed -> SetPercent(curPercent);
         curPercent = 0; // Velocity ain't "sticky", this is a safety thing
@@ -82,6 +126,9 @@ public:
         }
     } 
 
+    /**
+     * Get the current (physical) direction of the module
+     */
     long GetDirection() {
         return smartLoop(cancoder -> GetAbsolutePosition() - encoderOffset);
     }

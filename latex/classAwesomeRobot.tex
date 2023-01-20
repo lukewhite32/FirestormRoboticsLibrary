@@ -1,0 +1,172 @@
+\hypertarget{classAwesomeRobot}{}\doxysection{Awesome\+Robot\texorpdfstring{$<$}{<} Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type \texorpdfstring{$>$}{>} Class Template Reference}
+\label{classAwesomeRobot}\index{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}}
+
+
+{\ttfamily \#include $<$Awesome\+Robot\+Base.\+hpp$>$}
+
+Inheritance diagram for Awesome\+Robot\texorpdfstring{$<$}{<} Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type \texorpdfstring{$>$}{>}\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.944445cm]{classAwesomeRobot}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classAwesomeRobot_ac220463a3cbed5b9a19fb7c213d32637}{Start\+Competition}} ()
+\item 
+void \mbox{\hyperlink{classAwesomeRobot_a917b1bec06fb298eedea890b25f46f99}{End\+Competition}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classAwesomeRobot_a122fe1f14e545a187bafd5c5f86071f5}{switch\+Mode}} (\mbox{\hyperlink{classRobotMode}{Robot\+Mode}} $\ast$to\+Mode)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void $\ast$ \mbox{\hyperlink{classAwesomeRobot_ac3473d28125ce877756f0d1d930558e3}{thread\+\_\+function}} (void $\ast$\+\_\+robot)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::atomic$<$ bool $>$ \mbox{\hyperlink{classAwesomeRobot_a5104b42bd2b4a1a2d40863437bae4ecd}{m\+\_\+exit}} = false
+\item 
+Teleop\+Mode\+Type $\ast$ \mbox{\hyperlink{classAwesomeRobot_ad687758b6042128c2be19905e3198be0}{teleop}} = new Teleop\+Mode\+Type
+\item 
+Autonomous\+Mode\+Type $\ast$ \mbox{\hyperlink{classAwesomeRobot_aeb0d4d5e6c144e0dc59266068722d30f}{autonomous}} = new Autonomous\+Mode\+Type
+\item 
+Test\+Mode\+Type $\ast$ \mbox{\hyperlink{classAwesomeRobot_add05722b3d068ed3d3bece0da359c026}{test}} = new Test\+Mode\+Type
+\item 
+Disabled\+Mode\+Type $\ast$ \mbox{\hyperlink{classAwesomeRobot_acd8b7b2f69fee40a5e7eecea2034c70c}{disabled}} = new Disabled\+Mode\+Type
+\item 
+\mbox{\hyperlink{classRobotMode}{Robot\+Mode}} $\ast$ \mbox{\hyperlink{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}{active\+Mode}} = 0
+\item 
+pthread\+\_\+t \mbox{\hyperlink{classAwesomeRobot_af663d48448751d8b604e4af786cf648d}{thread}}
+\item 
+frc\+::internal\+::\+Driver\+Station\+Mode\+Thread \mbox{\hyperlink{classAwesomeRobot_a2b20a55f071f5be4edf36e643c89877e}{mode\+Thread}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$\mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Teleop\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Autonomous\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Test\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Disabled\+Mode\+Type$>$\newline
+class Awesome\+Robot$<$ Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type $>$}
+\begin{DoxyAuthor}{Author}
+Tyler Clarke 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+Templated class that manages threads, calls the right mode at the right time, and etc. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAwesomeRobot_a917b1bec06fb298eedea890b25f46f99}\label{classAwesomeRobot_a917b1bec06fb298eedea890b25f46f99}} 
+\index{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}!EndCompetition@{EndCompetition}}
+\index{EndCompetition@{EndCompetition}!AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}}
+\doxysubsubsection{\texorpdfstring{EndCompetition()}{EndCompetition()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Teleop\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Autonomous\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Test\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Disabled\+Mode\+Type$>$ \\
+void \mbox{\hyperlink{classAwesomeRobot}{Awesome\+Robot}}$<$ Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type $>$\+::\+End\+Competition (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Called by FRC internal; sets {\ttfamily \doxylink{classAwesomeRobot_a5104b42bd2b4a1a2d40863437bae4ecd}{m\+\_\+exit}} to true. \mbox{\Hypertarget{classAwesomeRobot_ac220463a3cbed5b9a19fb7c213d32637}\label{classAwesomeRobot_ac220463a3cbed5b9a19fb7c213d32637}} 
+\index{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}!StartCompetition@{StartCompetition}}
+\index{StartCompetition@{StartCompetition}!AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}}
+\doxysubsubsection{\texorpdfstring{StartCompetition()}{StartCompetition()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Teleop\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Autonomous\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Test\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Disabled\+Mode\+Type$>$ \\
+void \mbox{\hyperlink{classAwesomeRobot}{Awesome\+Robot}}$<$ Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type $>$\+::\+Start\+Competition (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Called by WPILib internal; overloaded here. Has a mainloop that runs while m\+\_\+exit is false. \mbox{\Hypertarget{classAwesomeRobot_a122fe1f14e545a187bafd5c5f86071f5}\label{classAwesomeRobot_a122fe1f14e545a187bafd5c5f86071f5}} 
+\index{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}!switchMode@{switchMode}}
+\index{switchMode@{switchMode}!AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}}
+\doxysubsubsection{\texorpdfstring{switchMode()}{switchMode()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Teleop\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Autonomous\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Test\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Disabled\+Mode\+Type$>$ \\
+void \mbox{\hyperlink{classAwesomeRobot}{Awesome\+Robot}}$<$ Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type $>$\+::switch\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classRobotMode}{Robot\+Mode}} $\ast$}]{to\+Mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+Switch the mode of the robot 
+\begin{DoxyParams}{Parameters}
+{\em to\+Mode} & The mode to switch control to. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classAwesomeRobot_ac3473d28125ce877756f0d1d930558e3}\label{classAwesomeRobot_ac3473d28125ce877756f0d1d930558e3}} 
+\index{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}!thread\_function@{thread\_function}}
+\index{thread\_function@{thread\_function}!AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}}
+\doxysubsubsection{\texorpdfstring{thread\_function()}{thread\_function()}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Teleop\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Autonomous\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Test\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Disabled\+Mode\+Type$>$ \\
+static void $\ast$ \mbox{\hyperlink{classAwesomeRobot}{Awesome\+Robot}}$<$ Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type $>$\+::thread\+\_\+function (\begin{DoxyParamCaption}\item[{void $\ast$}]{\+\_\+robot }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+The actual thread function 
+\begin{DoxyParams}{Parameters}
+{\em \+\_\+robot} & A void$\ast$ pointer to the \doxylink{classAwesomeRobot}{Awesome\+Robot} object. Necessary because this is static. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}\label{classAwesomeRobot_a14d47e69fe1e9f28136dba5d0e5f46d5}} 
+\index{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}!activeMode@{activeMode}}
+\index{activeMode@{activeMode}!AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}}
+\doxysubsubsection{\texorpdfstring{activeMode}{activeMode}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Teleop\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Autonomous\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Test\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Disabled\+Mode\+Type$>$ \\
+\mbox{\hyperlink{classRobotMode}{Robot\+Mode}}$\ast$ \mbox{\hyperlink{classAwesomeRobot}{Awesome\+Robot}}$<$ Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type $>$\+::active\+Mode = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+Store a pointer to the active mode. If this is 0, no mode is active. This is default, safe, and checked for; it will only be 0 until the robot turns on and does the disabled check. \mbox{\Hypertarget{classAwesomeRobot_aeb0d4d5e6c144e0dc59266068722d30f}\label{classAwesomeRobot_aeb0d4d5e6c144e0dc59266068722d30f}} 
+\index{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}!autonomous@{autonomous}}
+\index{autonomous@{autonomous}!AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}}
+\doxysubsubsection{\texorpdfstring{autonomous}{autonomous}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Teleop\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Autonomous\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Test\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Disabled\+Mode\+Type$>$ \\
+Autonomous\+Mode\+Type$\ast$ \mbox{\hyperlink{classAwesomeRobot}{Awesome\+Robot}}$<$ Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type $>$\+::autonomous = new Autonomous\+Mode\+Type\hspace{0.3cm}{\ttfamily [private]}}
+
+Heap allocated autonomous mode object
+
+See {\ttfamily \doxylink{classAwesomeRobot_ad687758b6042128c2be19905e3198be0}{teleop}} \mbox{\Hypertarget{classAwesomeRobot_acd8b7b2f69fee40a5e7eecea2034c70c}\label{classAwesomeRobot_acd8b7b2f69fee40a5e7eecea2034c70c}} 
+\index{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}!disabled@{disabled}}
+\index{disabled@{disabled}!AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}}
+\doxysubsubsection{\texorpdfstring{disabled}{disabled}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Teleop\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Autonomous\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Test\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Disabled\+Mode\+Type$>$ \\
+Disabled\+Mode\+Type$\ast$ \mbox{\hyperlink{classAwesomeRobot}{Awesome\+Robot}}$<$ Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type $>$\+::disabled = new Disabled\+Mode\+Type\hspace{0.3cm}{\ttfamily [private]}}
+
+Heap allocated disabled mode object.
+
+See {\ttfamily \doxylink{classAwesomeRobot_ad687758b6042128c2be19905e3198be0}{teleop}} \mbox{\Hypertarget{classAwesomeRobot_a5104b42bd2b4a1a2d40863437bae4ecd}\label{classAwesomeRobot_a5104b42bd2b4a1a2d40863437bae4ecd}} 
+\index{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}!m\_exit@{m\_exit}}
+\index{m\_exit@{m\_exit}!AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}}
+\doxysubsubsection{\texorpdfstring{m\_exit}{m\_exit}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Teleop\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Autonomous\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Test\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Disabled\+Mode\+Type$>$ \\
+std\+::atomic$<$bool$>$ \mbox{\hyperlink{classAwesomeRobot}{Awesome\+Robot}}$<$ Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type $>$\+::m\+\_\+exit = false\hspace{0.3cm}{\ttfamily [private]}}
+
+From WPILib. This variable controls whether or not to exit. It\textquotesingle{}s a threading thing. \mbox{\Hypertarget{classAwesomeRobot_a2b20a55f071f5be4edf36e643c89877e}\label{classAwesomeRobot_a2b20a55f071f5be4edf36e643c89877e}} 
+\index{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}!modeThread@{modeThread}}
+\index{modeThread@{modeThread}!AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}}
+\doxysubsubsection{\texorpdfstring{modeThread}{modeThread}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Teleop\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Autonomous\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Test\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Disabled\+Mode\+Type$>$ \\
+frc\+::internal\+::\+Driver\+Station\+Mode\+Thread \mbox{\hyperlink{classAwesomeRobot}{Awesome\+Robot}}$<$ Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type $>$\+::mode\+Thread\hspace{0.3cm}{\ttfamily [private]}}
+
+Internal FRC stuff \mbox{\Hypertarget{classAwesomeRobot_ad687758b6042128c2be19905e3198be0}\label{classAwesomeRobot_ad687758b6042128c2be19905e3198be0}} 
+\index{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}!teleop@{teleop}}
+\index{teleop@{teleop}!AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}}
+\doxysubsubsection{\texorpdfstring{teleop}{teleop}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Teleop\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Autonomous\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Test\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Disabled\+Mode\+Type$>$ \\
+Teleop\+Mode\+Type$\ast$ \mbox{\hyperlink{classAwesomeRobot}{Awesome\+Robot}}$<$ Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type $>$\+::teleop = new Teleop\+Mode\+Type\hspace{0.3cm}{\ttfamily [private]}}
+
+Heap allocated teleop mode object.
+
+Stack allocation {\itshape would} have been better, but I really wanted to be able to say \char`\"{}active\+Mode == disabled\char`\"{} without having to take a reference every time, and active\+Mode does in fact have to be a pointer. \mbox{\Hypertarget{classAwesomeRobot_add05722b3d068ed3d3bece0da359c026}\label{classAwesomeRobot_add05722b3d068ed3d3bece0da359c026}} 
+\index{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}!test@{test}}
+\index{test@{test}!AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}}
+\doxysubsubsection{\texorpdfstring{test}{test}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Teleop\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Autonomous\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Test\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Disabled\+Mode\+Type$>$ \\
+Test\+Mode\+Type$\ast$ \mbox{\hyperlink{classAwesomeRobot}{Awesome\+Robot}}$<$ Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type $>$\+::test = new Test\+Mode\+Type\hspace{0.3cm}{\ttfamily [private]}}
+
+Heap allocated test mode object.
+
+See {\ttfamily \doxylink{classAwesomeRobot_ad687758b6042128c2be19905e3198be0}{teleop}} \mbox{\Hypertarget{classAwesomeRobot_af663d48448751d8b604e4af786cf648d}\label{classAwesomeRobot_af663d48448751d8b604e4af786cf648d}} 
+\index{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}!thread@{thread}}
+\index{thread@{thread}!AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$@{AwesomeRobot$<$ TeleopModeType, AutonomousModeType, TestModeType, DisabledModeType $>$}}
+\doxysubsubsection{\texorpdfstring{thread}{thread}}
+{\footnotesize\ttfamily template$<$\mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Teleop\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Autonomous\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Test\+Mode\+Type, \mbox{\hyperlink{conceptRobotModeType}{Robot\+Mode\+Type}} Disabled\+Mode\+Type$>$ \\
+pthread\+\_\+t \mbox{\hyperlink{classAwesomeRobot}{Awesome\+Robot}}$<$ Teleop\+Mode\+Type, Autonomous\+Mode\+Type, Test\+Mode\+Type, Disabled\+Mode\+Type $>$\+::thread\hspace{0.3cm}{\ttfamily [private]}}
+
+Surprise surprise\+: there\textquotesingle{}s only one thread. It calls active\+Mode -\/\texorpdfstring{$>$}{>} Thread() at a specified update rate using 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+bases/Awesome\+Robot\+Base.\+hpp\end{DoxyCompactItemize}

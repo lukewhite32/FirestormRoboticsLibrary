@@ -1,0 +1,27 @@
+\hypertarget{BaseMotor_8hpp_source}{}\doxysection{Base\+Motor.\+hpp}
+\label{BaseMotor_8hpp_source}\index{motor/BaseMotor.hpp@{motor/BaseMotor.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{comment}{/*\ By\ Tyler\ Clarke.\ Base\ class\ for\ polymorphing\ highly\ compatible\ motors\ */}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classBaseMotor}{BaseMotor}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBaseMotor_a61e487fddfbc270084284518470352e4}{SetPercent}}(\textcolor{keywordtype}{double}\ percent)\ =\ 0;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBaseMotor_adad95b74354e664d84113308c9db10e6}{SetInverted}}(\textcolor{keywordtype}{bool}\ invert)\ =\ 0;}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBaseMotor_aab8429fbe1317f1f0989524d0f99f0bc}{SetP}}(\textcolor{keywordtype}{double}\ kP)\ =\ 0;}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBaseMotor_acd5e4478b4329fc341a8cf9a8957c6c7}{SetI}}(\textcolor{keywordtype}{double}\ kI)\ =\ 0;}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBaseMotor_aba3832517f84b4a1f070dff92440422f}{SetD}}(\textcolor{keywordtype}{double}\ kD)\ =\ 0;}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBaseMotor_a5eb4d772595a2cdf402e45e00b733aae}{SetF}}(\textcolor{keywordtype}{double}\ kF)\ =\ 0;}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBaseMotor_aa025c0d9ad078567d03224193516ed29}{SetOutputRange}}(\textcolor{keywordtype}{double}\ kPeakOF,\ \textcolor{keywordtype}{double}\ kPeakOR,\ \textcolor{keywordtype}{double}\ kNominalOF,\ \textcolor{keywordtype}{double}\ kNominalOR)\ =\ 0;}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classBaseMotor_aebe865d9924792c55113031218e6b3c4}{GetPosition}}()\ =\ 0;}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classBaseMotor_a6f452dd523c244b4c63282d1bdd967a6}{GetVelocity}}()\ =\ 0;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBaseMotor_a09ead7a8b2876c3177a0258c5608d357}{SetPositionPID}}(\textcolor{keywordtype}{double}\ position)\ =\ 0;}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classBaseMotor_aab18866cd70caafc5a37f25287c79617}{SetSpeedPID}}(\textcolor{keywordtype}{double}\ speed)\ =\ 0;}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classBaseMotor_a0d530a9b0ff528db37733320f22366d3}{IsAtZero}}()\ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{classBaseMotor_aebe865d9924792c55113031218e6b3c4}{GetPosition}}()\ ==\ 0;}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \};}
+
+\end{DoxyCode}
