@@ -85,8 +85,8 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af7833b338221c38125afeeab9486cc89"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPIDController.html#af7833b338221c38125afeeab9486cc89">SetCircumference</a> (long circumference)</td></tr>
 <tr class="separator:af7833b338221c38125afeeab9486cc89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a805965a8d2277c261c8d0f9e23c7e6a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPIDController.html#a805965a8d2277c261c8d0f9e23c7e6a3">PIDPositionController</a> (<a class="el" href="classBaseMotor.html">BaseMotor</a> *m, float frequency=50)</td></tr>
-<tr class="separator:a805965a8d2277c261c8d0f9e23c7e6a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08a247e9a089c06377dd33258846e5ec"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPIDController.html#a08a247e9a089c06377dd33258846e5ec">PIDController</a> (<a class="el" href="classBaseMotor.html">BaseMotor</a> *m, float frequency=50)</td></tr>
+<tr class="separator:a08a247e9a089c06377dd33258846e5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05d1a51dbe23f22cdd85304537e7466f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPIDController.html#a05d1a51dbe23f22cdd85304537e7466f">Update</a> ()</td></tr>
 <tr class="separator:a05d1a51dbe23f22cdd85304537e7466f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3cb59608438ff30f2ecb2f387be97514"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPIDController.html#a3cb59608438ff30f2ecb2f387be97514">Update</a> (double cPos)</td></tr>
@@ -134,7 +134,51 @@ Private Attributes</h2></td></tr>
 <dl class="section version"><dt>Version</dt><dd>1.0 Class that controls any <a class="el" href="classBaseMotor.html">BaseMotor</a> for PID.</dd></dl>
 <p>Tune coefficients by altering the constants property directly.</p>
 <p>Only for controlling positions at the moment - speed coming soon. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a08a247e9a089c06377dd33258846e5ec" name="a08a247e9a089c06377dd33258846e5ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a08a247e9a089c06377dd33258846e5ec">&#9670;&#160;</a></span>PIDController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">PIDController::PIDController </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classBaseMotor.html">BaseMotor</a> *&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>frequency</em> = <code>50</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Construct the <a class="el" href="classPIDController.html">PIDController</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>The <a class="el" href="classBaseMotor.html">BaseMotor</a> object to control </td></tr>
+    <tr><td class="paramname">frequency</td><td>The frequency to update PID at. Larger frequencies will result in faster PID code. Default is 50 hz. This is really just here to set a good speed baseline for PID control, but it can also be a quick way to increase ramp speed. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="afa5803d1578df73891c65038db1d7343" name="afa5803d1578df73891c65038db1d7343"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa5803d1578df73891c65038db1d7343">&#9670;&#160;</a></span>DoMath()</h2>
 
@@ -282,49 +326,6 @@ Private Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">set</td><td>The setpoint </td></tr>
     <tr><td class="paramname">cur</td><td>The current position </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a805965a8d2277c261c8d0f9e23c7e6a3" name="a805965a8d2277c261c8d0f9e23c7e6a3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a805965a8d2277c261c8d0f9e23c7e6a3">&#9670;&#160;</a></span>PIDPositionController()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">PIDController::PIDPositionController </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classBaseMotor.html">BaseMotor</a> *&#160;</td>
-          <td class="paramname"><em>m</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>frequency</em> = <code>50</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<p>Construct the PIDPositionController </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">m</td><td>The <a class="el" href="classBaseMotor.html">BaseMotor</a> object to control </td></tr>
-    <tr><td class="paramname">frequency</td><td>The frequency to update PID at. Larger frequencies will result in faster PID code. Default is 50 hz. This is really just here to set a good speed baseline for PID control, but it can also be a quick way to increase ramp speed. </td></tr>
   </table>
   </dd>
 </dl>

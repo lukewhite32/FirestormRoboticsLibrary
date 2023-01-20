@@ -9,7 +9,7 @@
 \item 
 void \mbox{\hyperlink{classPIDController_af7833b338221c38125afeeab9486cc89}{Set\+Circumference}} (long circumference)
 \item 
-\mbox{\hyperlink{classPIDController_a805965a8d2277c261c8d0f9e23c7e6a3}{PIDPosition\+Controller}} (\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$m, float frequency=50)
+\mbox{\hyperlink{classPIDController_a08a247e9a089c06377dd33258846e5ec}{PIDController}} (\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$m, float frequency=50)
 \item 
 void \mbox{\hyperlink{classPIDController_a05d1a51dbe23f22cdd85304537e7466f}{Update}} ()
 \item 
@@ -65,6 +65,22 @@ Tune coefficients by altering the constants property directly.
 
 Only for controlling positions at the moment -\/ speed coming soon. 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classPIDController_a08a247e9a089c06377dd33258846e5ec}\label{classPIDController_a08a247e9a089c06377dd33258846e5ec}} 
+\index{PIDController@{PIDController}!PIDController@{PIDController}}
+\index{PIDController@{PIDController}!PIDController@{PIDController}}
+\doxysubsubsection{\texorpdfstring{PIDController()}{PIDController()}}
+{\footnotesize\ttfamily PIDController\+::\+PIDController (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$}]{m,  }\item[{float}]{frequency = {\ttfamily 50} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construct the \doxylink{classPIDController}{PIDController} 
+\begin{DoxyParams}{Parameters}
+{\em m} & The \doxylink{classBaseMotor}{Base\+Motor} object to control \\
+\hline
+{\em frequency} & The frequency to update PID at. Larger frequencies will result in faster PID code. Default is 50 hz. This is really just here to set a good speed baseline for PID control, but it can also be a quick way to increase ramp speed. \\
+\hline
+\end{DoxyParams}
+
+
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classPIDController_afa5803d1578df73891c65038db1d7343}\label{classPIDController_afa5803d1578df73891c65038db1d7343}} 
 \index{PIDController@{PIDController}!DoMath@{DoMath}}
@@ -118,19 +134,6 @@ Used internally only.
 {\em set} & The setpoint \\
 \hline
 {\em cur} & The current position \\
-\hline
-\end{DoxyParams}
-\mbox{\Hypertarget{classPIDController_a805965a8d2277c261c8d0f9e23c7e6a3}\label{classPIDController_a805965a8d2277c261c8d0f9e23c7e6a3}} 
-\index{PIDController@{PIDController}!PIDPositionController@{PIDPositionController}}
-\index{PIDPositionController@{PIDPositionController}!PIDController@{PIDController}}
-\doxysubsubsection{\texorpdfstring{PIDPositionController()}{PIDPositionController()}}
-{\footnotesize\ttfamily PIDController\+::\+PIDPosition\+Controller (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classBaseMotor}{Base\+Motor}} $\ast$}]{m,  }\item[{float}]{frequency = {\ttfamily 50} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
-
-Construct the PIDPosition\+Controller 
-\begin{DoxyParams}{Parameters}
-{\em m} & The \doxylink{classBaseMotor}{Base\+Motor} object to control \\
-\hline
-{\em frequency} & The frequency to update PID at. Larger frequencies will result in faster PID code. Default is 50 hz. This is really just here to set a good speed baseline for PID control, but it can also be a quick way to increase ramp speed. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classPIDController_af7833b338221c38125afeeab9486cc89}\label{classPIDController_af7833b338221c38125afeeab9486cc89}} 

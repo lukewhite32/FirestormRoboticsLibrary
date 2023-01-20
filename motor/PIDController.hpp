@@ -169,11 +169,11 @@ public:
     }
     
     /**
-     * Construct the PIDPositionController
+     * Construct the PIDController
      @param m The BaseMotor object to control
      @param frequency The frequency to update PID at. Larger frequencies will result in faster PID code. Default is 50 hz. This is really just here to set a good speed baseline for PID control, but it can also be a quick way to increase ramp speed.
      */
-    PIDPositionController (BaseMotor* m, float frequency = 50){ // Update at 50 hz by default
+    PIDController (BaseMotor* m, float frequency = 50){ // Update at 50 hz by default
         motor = m;
         hz = frequency;
     }
