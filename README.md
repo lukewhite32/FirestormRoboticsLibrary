@@ -1,6 +1,12 @@
-## This is a very minimal set of libraries for Firestorm Robotics.
-It's really very simple. Just configure your build script (in a robot project) to run `use.py` and it handles the rest.
+Add
+```
+task loadFirestormRoboticsLibrary(type: Exec) {
+    commandLine 'python', 'use.py'
+}
 
-Include `FRL/motor/SparkMotor.hpp` for SparkMotors (polymorphic wrapper around SparkMax)  
-Include `FRL/motor/TalonSRXMotor.hpp` for SparkMotors (polymorphic wrapper around TalonSRX)  
-It doesn't come with vendor libraries; supply Phoenix and Revlib yourself.
+build.dependsOn loadFirestormRoboticsLibrary
+```
+to `build.gradle` in your robot project. `use.py` will automatically check the library version and download it if necessary every time a build runs on wifi.  
+From there, just `#include <FRL/whatever/whatever.hpp>` to use libraries.
+
+Everything is kept under the namespace `frl` - theoretically. In practice almost nothing is. This is a Work In Progress.
