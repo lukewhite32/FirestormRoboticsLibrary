@@ -1,6 +1,8 @@
-motor/BaseMotor.hpp
-motor/PIDController.hpp
-motor/SparkMotor.hpp
-motor/TalonFXMotor.hpp
-motor/TalonSRXMotor.hpp
-swerve/SwerveModule.hpp
+Dmotor
+Dswerve
+Fmotor/BaseMotor.hpp
+Fmotor/PIDController.hpp
+Fmotor/SparkMotor.hpp
+Fmotor/TalonFXMotor.hpp
+Fmotor/TalonSRXMotor.hpp
+Fswerve/SwerveModule.hpp
