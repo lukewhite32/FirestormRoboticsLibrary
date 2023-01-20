@@ -70,7 +70,7 @@ public:
         direction = directionMotor;
         cancoder = new CANCoder {CanCoderID};
 
-        directionController = new PIDPositionController (direction);
+        directionController = new PIDController (direction);
         directionController -> constants.P = 0.0005;
         //directionController -> constants.I = 0.0001;
         directionController -> constants.MaxOutput = 0.2;
