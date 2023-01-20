@@ -13,84 +13,84 @@
 \DoxyCodeLine{00015\ \ \ \ \ TalonFX*\ talon;}
 \DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{bool}\ invert\ =\ \textcolor{keyword}{false};}
 \DoxyCodeLine{00017\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{classTalonFXMotor}{TalonFXMotor}}\ (\textcolor{keywordtype}{int}\ canID)\{}
-\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ talon\ =\ \textcolor{keyword}{new}\ TalonFX(canID);}
-\DoxyCodeLine{00020\ \ \ \ \ \}}
-\DoxyCodeLine{00021\ }
-\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_a2c0d70b067e8763722f03c6673424091}{SetPercent}}(\textcolor{keywordtype}{double}\ speed)\{}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (speed\ <\ 0)\ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ talon\ -\/>\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(!invert);}
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ speed\ *=\ -\/1;}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ talon\ -\/>\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(invert);}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}\ \ \ }
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ talon\ -\/>\ Set(ControlMode::PercentOutput,\ speed);}
-\DoxyCodeLine{00032\ \ \ \ \ \}}
-\DoxyCodeLine{00033\ }
-\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(\textcolor{keywordtype}{bool}\ doInv)\ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ invert\ =\ doInv;}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{classTalonFXMotor_a2a90bb0fb2f08ffc07db3964b4ea779a}{TalonFXMotor}}\ (\textcolor{keywordtype}{int}\ canID)\{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ talon\ =\ \textcolor{keyword}{new}\ TalonFX(canID);}
+\DoxyCodeLine{00024\ \ \ \ \ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_a2c0d70b067e8763722f03c6673424091}{SetPercent}}(\textcolor{keywordtype}{double}\ speed)\{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (speed\ <\ 0)\ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ talon\ -\/>\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(!invert);}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ speed\ *=\ -\/1;}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ talon\ -\/>\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(invert);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ talon\ -\/>\ Set(ControlMode::PercentOutput,\ speed);}
 \DoxyCodeLine{00036\ \ \ \ \ \}}
-\DoxyCodeLine{00037\ \ \ \ \ }
-\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_a603def2b11e52b9cf320b515866a596f}{SetP}}(\textcolor{keywordtype}{double}\ kP)\{}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ talon\ -\/>\ Config\_kP(0,\ kP);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(\textcolor{keywordtype}{bool}\ doInv)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ invert\ =\ doInv;}
 \DoxyCodeLine{00040\ \ \ \ \ \}}
-\DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_acc3a5363b99d07d6ae9b7c173e4c46c6}{SetI}}(\textcolor{keywordtype}{double}\ kI)\{}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ talon\ -\/>\ Config\_kI(0,\ kI);}
+\DoxyCodeLine{00041\ \ \ \ \ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_a603def2b11e52b9cf320b515866a596f}{SetP}}(\textcolor{keywordtype}{double}\ kP)\{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ talon\ -\/>\ Config\_kP(0,\ kP);}
 \DoxyCodeLine{00044\ \ \ \ \ \}}
 \DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_ad516ef8612606e1ee81654e1cd965d68}{SetD}}(\textcolor{keywordtype}{double}\ kD)\{}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ talon\ -\/>\ Config\_kD(0,\ kD);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_acc3a5363b99d07d6ae9b7c173e4c46c6}{SetI}}(\textcolor{keywordtype}{double}\ kI)\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ talon\ -\/>\ Config\_kI(0,\ kI);}
 \DoxyCodeLine{00048\ \ \ \ \ \}}
 \DoxyCodeLine{00049\ }
-\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_ad145cea61dc6700426f91b12d1d7c156}{SetF}}(\textcolor{keywordtype}{double}\ kF)\{}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ talon\ -\/>\ Config\_kF(0,\ kF);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_ad516ef8612606e1ee81654e1cd965d68}{SetD}}(\textcolor{keywordtype}{double}\ kD)\{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ talon\ -\/>\ Config\_kD(0,\ kD);}
 \DoxyCodeLine{00052\ \ \ \ \ \}}
 \DoxyCodeLine{00053\ }
-\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_a7eec1c3827396c4788f2b11eaa493638}{SetOutputRange}}(\textcolor{keywordtype}{double}\ kPeakOF,\ \textcolor{keywordtype}{double}\ kPeakOR,\ \textcolor{keywordtype}{double}\ kNominalOF\ =\ 0,\ \textcolor{keywordtype}{double}\ kNominalOR\ =\ 0)\{}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ talon\ -\/>\ ConfigPeakOutputForward(kPeakOF);}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ talon\ -\/>\ ConfigPeakOutputReverse(kPeakOR);}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ talon\ -\/>\ ConfigNominalOutputForward(kNominalOF);}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ talon\ -\/>\ ConfigNominalOutputReverse(kNominalOR);}
-\DoxyCodeLine{00059\ \ \ \ \ \}}
-\DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classTalonFXMotor_aba41e1a0bc182f369221dd78f815fbb9}{GetPosition}}()\ \{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ talon\ -\/>\ GetSeletedSensorPosition();}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_ad145cea61dc6700426f91b12d1d7c156}{SetF}}(\textcolor{keywordtype}{double}\ kF)\{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ talon\ -\/>\ Config\_kF(0,\ kF);}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_a7eec1c3827396c4788f2b11eaa493638}{SetOutputRange}}(\textcolor{keywordtype}{double}\ kPeakOF,\ \textcolor{keywordtype}{double}\ kPeakOR,\ \textcolor{keywordtype}{double}\ kNominalOF\ =\ 0,\ \textcolor{keywordtype}{double}\ kNominalOR\ =\ 0)\{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ talon\ -\/>\ ConfigPeakOutputForward(kPeakOF);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ talon\ -\/>\ ConfigPeakOutputReverse(kPeakOR);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ talon\ -\/>\ ConfigNominalOutputForward(kNominalOF);}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ talon\ -\/>\ ConfigNominalOutputReverse(kNominalOR);}
 \DoxyCodeLine{00063\ \ \ \ \ \}}
-\DoxyCodeLine{00064\ \ \ \ \ }
-\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classTalonFXMotor_a22a7dd81a2e793cf2cbc79e6dd100529}{GetVelocity}}()\ \{}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ talon\ -\/>\ GetSelectedSensorVelocity();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classTalonFXMotor_aba41e1a0bc182f369221dd78f815fbb9}{GetPosition}}()\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ talon\ -\/>\ GetSeletedSensorPosition();}
 \DoxyCodeLine{00067\ \ \ \ \ \}}
 \DoxyCodeLine{00068\ \ \ \ \ }
-\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_a064e2fe34ef639705db6e7db64cc2ab4}{SetPositionPID}}(\textcolor{keywordtype}{double}\ position)\{}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (position\ <\ 0)\ \{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ talon\ -\/>\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(!invert);}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ position\ *=\ -\/1;}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ talon\ -\/>\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(invert);}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}\ \ \ }
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ talon\ -\/>\ Set(ControlMode::Position,\ position);}
-\DoxyCodeLine{00079\ \ \ \ \ \}}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_aa07be6b67d8b4b5c9f61a5d83866feee}{SetSpeedPID}}(\textcolor{keywordtype}{double}\ speed)\{}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (speed\ <\ 0)\ \{}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ talon\ -\/>\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(!invert);}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ speed\ *=\ -\/1;}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ talon\ -\/>\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(invert);}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}\ \ \ }
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ talon\ -\/>\ Set(ControlMode::Velocity,\ speed);}
-\DoxyCodeLine{00091\ \ \ \ \ \}}
-\DoxyCodeLine{00092\ \ \ \ \ }
-\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ SetZeroEncoder()\ \{}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ talon\ -\/>\ SetSelectedSensorPosition(0);}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{double}\ \mbox{\hyperlink{classTalonFXMotor_a22a7dd81a2e793cf2cbc79e6dd100529}{GetVelocity}}()\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ talon\ -\/>\ GetSelectedSensorVelocity();}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_a064e2fe34ef639705db6e7db64cc2ab4}{SetPositionPID}}(\textcolor{keywordtype}{double}\ position)\{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (position\ <\ 0)\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ talon\ -\/>\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(!invert);}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ position\ *=\ -\/1;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ talon\ -\/>\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(invert);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ talon\ -\/>\ Set(ControlMode::Position,\ position);}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classTalonFXMotor_aa07be6b67d8b4b5c9f61a5d83866feee}{SetSpeedPID}}(\textcolor{keywordtype}{double}\ speed)\{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (speed\ <\ 0)\ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ talon\ -\/>\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(!invert);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ speed\ *=\ -\/1;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ talon\ -\/>\ \mbox{\hyperlink{classTalonFXMotor_a8810ff44c2703727f55ac30dca897627}{SetInverted}}(invert);}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}\ \ \ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ talon\ -\/>\ Set(ControlMode::Velocity,\ speed);}
 \DoxyCodeLine{00095\ \ \ \ \ \}}
-\DoxyCodeLine{00096\ \};}
+\DoxyCodeLine{00096\ \ \ \ \ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ SetZeroEncoder()\ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ talon\ -\/>\ SetSelectedSensorPosition(0);}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \};}
 
 \end{DoxyCode}
