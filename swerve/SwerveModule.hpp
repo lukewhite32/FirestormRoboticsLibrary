@@ -98,7 +98,7 @@ public:
         directionController -> SetPosition(targetPos);
         directionController -> Update(GetDirection());
         if (isLinked){
-            linkSwerve -> SetDirectionAngle(targetPos);
+            linkSwerve -> SetDirection(targetPos);
         }
     }
 
