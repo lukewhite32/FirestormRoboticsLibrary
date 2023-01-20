@@ -1,3 +1,7 @@
+/* By Tyler Clarke
+    PID controls for any conforming BaseMotor
+*/
+
 // This is entirely based off the code at https://docs.revrobotics.com/sparkmax/operating-modes/closed-loop-control, squeezed into a C++ format
 #include "BaseMotor.hpp"
 #include <frc/Timer.h>
