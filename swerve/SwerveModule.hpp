@@ -96,7 +96,7 @@ public:
      */
     void SetDirection(double targetPos) {
         directionController -> SetPosition(targetPos);
-        directionController -> Update(GetAbsoluteCANCoderPos());
+        directionController -> Update(GetDirection());
         if (isLinked){
             linkSwerve -> SetDirectionAngle(targetPos);
         }
