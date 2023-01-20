@@ -66,7 +66,6 @@ public:
      */
     SwerveModule(BaseMotor* speedMotor, BaseMotor* directionMotor, int CanCoderID, double offset, bool speedInverted=false, bool direcInverted=false) {
         encoderOffset = offset;
-        std::cout << "Swerve: " << speedID << ", " << directionIdentifier << ", " << CanCoderID << ", " << roll << std::endl;
         speed = speedMotor;
         direction = directionMotor;
         cancoder = new CANCoder {CanCoderID};
