@@ -1,0 +1,204 @@
+\hypertarget{classTalonSRXMotor}{}\doxysection{Talon\+SRXMotor Class Reference}
+\label{classTalonSRXMotor}\index{TalonSRXMotor@{TalonSRXMotor}}
+Inheritance diagram for Talon\+SRXMotor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classTalonSRXMotor}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classTalonSRXMotor_a453c3675965dcf1fa4fe958ffa08afb6}\label{classTalonSRXMotor_a453c3675965dcf1fa4fe958ffa08afb6}} 
+{\bfseries Talon\+SRXMotor} (int can\+ID)
+\item 
+bool \mbox{\hyperlink{classTalonSRXMotor_a5f5c8ce8714d8748991f576afedf0b11}{set\+Inverted}} ()
+\item 
+void \mbox{\hyperlink{classTalonSRXMotor_abbc62740c09718edbe69fb6a89ed89d9}{Set\+Percent}} (double speed)
+\item 
+void \mbox{\hyperlink{classTalonSRXMotor_a39ceda723f9dd9fb06821741ebf146f8}{SetP}} (double kP)
+\item 
+void \mbox{\hyperlink{classTalonSRXMotor_a28782ab8b89a47068dc015bef17d36ca}{SetI}} (double kI)
+\item 
+void \mbox{\hyperlink{classTalonSRXMotor_a29b5dd1a09ed5ea01a21ddbe54943fff}{SetD}} (double kD)
+\item 
+void \mbox{\hyperlink{classTalonSRXMotor_aef7ea0004df6cf8045d6aba7058a783a}{SetF}} (double kF)
+\item 
+void \mbox{\hyperlink{classTalonSRXMotor_ac44f935162b12933417bc5dbad4bfbc1}{Set\+Output\+Range}} (double k\+Peak\+OF, double k\+Peak\+OR, double k\+Nominal\+OF=0, double k\+Nominal\+OR=0)
+\item 
+void \mbox{\hyperlink{classTalonSRXMotor_aafc0d726a1643c4a872f5662891ca1fa}{Set\+Position\+PID}} (double position)
+\item 
+void \mbox{\hyperlink{classTalonSRXMotor_a0bd2b64b23dd352cb9ea1342f98791da}{Set\+Speed\+PID}} (double speed)
+\item 
+double \mbox{\hyperlink{classTalonSRXMotor_ab7beb5b1f4a219500390a4db89054b64}{Get\+Position}} ()
+\item 
+double \mbox{\hyperlink{classTalonSRXMotor_a1288322b0d893bb995ed874c059e1931}{Get\+Velocity}} ()
+\item 
+bool \mbox{\hyperlink{classTalonSRXMotor_a814ffdea3a16c156e831ed2e99617e0d}{is\+At\+Zero}} ()
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBaseMotor_a61e487fddfbc270084284518470352e4}\label{classBaseMotor_a61e487fddfbc270084284518470352e4}} 
+virtual void {\bfseries Set\+Percent} (double percent)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_a90fc9bd2d7fce5157dc0b90c4a03a096}\label{classBaseMotor_a90fc9bd2d7fce5157dc0b90c4a03a096}} 
+virtual void {\bfseries set\+Inverted} ()=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_aab8429fbe1317f1f0989524d0f99f0bc}\label{classBaseMotor_aab8429fbe1317f1f0989524d0f99f0bc}} 
+virtual void {\bfseries SetP} (double kP)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_acd5e4478b4329fc341a8cf9a8957c6c7}\label{classBaseMotor_acd5e4478b4329fc341a8cf9a8957c6c7}} 
+virtual void {\bfseries SetI} (double kI)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_aba3832517f84b4a1f070dff92440422f}\label{classBaseMotor_aba3832517f84b4a1f070dff92440422f}} 
+virtual void {\bfseries SetD} (double kD)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_a5eb4d772595a2cdf402e45e00b733aae}\label{classBaseMotor_a5eb4d772595a2cdf402e45e00b733aae}} 
+virtual void {\bfseries SetF} (double kF)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_aa025c0d9ad078567d03224193516ed29}\label{classBaseMotor_aa025c0d9ad078567d03224193516ed29}} 
+virtual void {\bfseries Set\+Output\+Range} (double k\+Peak\+OF, double k\+Peak\+OR, double k\+Nominal\+OF, double k\+Nominal\+OR)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_aebe865d9924792c55113031218e6b3c4}\label{classBaseMotor_aebe865d9924792c55113031218e6b3c4}} 
+virtual double {\bfseries Get\+Position} ()=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_a6f452dd523c244b4c63282d1bdd967a6}\label{classBaseMotor_a6f452dd523c244b4c63282d1bdd967a6}} 
+virtual double {\bfseries Get\+Velocity} ()=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_a09ead7a8b2876c3177a0258c5608d357}\label{classBaseMotor_a09ead7a8b2876c3177a0258c5608d357}} 
+virtual void {\bfseries Set\+Position\+PID} (double position)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_aab18866cd70caafc5a37f25287c79617}\label{classBaseMotor_aab18866cd70caafc5a37f25287c79617}} 
+virtual void {\bfseries Set\+Speed\+PID} (double speed)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_a985bf810465e329534b148ae4ac4a922}\label{classBaseMotor_a985bf810465e329534b148ae4ac4a922}} 
+virtual bool {\bfseries is\+At\+Zero} ()=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTalonSRXMotor_ab7beb5b1f4a219500390a4db89054b64}\label{classTalonSRXMotor_ab7beb5b1f4a219500390a4db89054b64}} 
+\index{TalonSRXMotor@{TalonSRXMotor}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!TalonSRXMotor@{TalonSRXMotor}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily double Talon\+SRXMotor\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonSRXMotor_a1288322b0d893bb995ed874c059e1931}\label{classTalonSRXMotor_a1288322b0d893bb995ed874c059e1931}} 
+\index{TalonSRXMotor@{TalonSRXMotor}!GetVelocity@{GetVelocity}}
+\index{GetVelocity@{GetVelocity}!TalonSRXMotor@{TalonSRXMotor}}
+\doxysubsubsection{\texorpdfstring{GetVelocity()}{GetVelocity()}}
+{\footnotesize\ttfamily double Talon\+SRXMotor\+::\+Get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonSRXMotor_a814ffdea3a16c156e831ed2e99617e0d}\label{classTalonSRXMotor_a814ffdea3a16c156e831ed2e99617e0d}} 
+\index{TalonSRXMotor@{TalonSRXMotor}!isAtZero@{isAtZero}}
+\index{isAtZero@{isAtZero}!TalonSRXMotor@{TalonSRXMotor}}
+\doxysubsubsection{\texorpdfstring{isAtZero()}{isAtZero()}}
+{\footnotesize\ttfamily bool Talon\+SRXMotor\+::is\+At\+Zero (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonSRXMotor_a29b5dd1a09ed5ea01a21ddbe54943fff}\label{classTalonSRXMotor_a29b5dd1a09ed5ea01a21ddbe54943fff}} 
+\index{TalonSRXMotor@{TalonSRXMotor}!SetD@{SetD}}
+\index{SetD@{SetD}!TalonSRXMotor@{TalonSRXMotor}}
+\doxysubsubsection{\texorpdfstring{SetD()}{SetD()}}
+{\footnotesize\ttfamily void Talon\+SRXMotor\+::\+SetD (\begin{DoxyParamCaption}\item[{double}]{kD }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonSRXMotor_aef7ea0004df6cf8045d6aba7058a783a}\label{classTalonSRXMotor_aef7ea0004df6cf8045d6aba7058a783a}} 
+\index{TalonSRXMotor@{TalonSRXMotor}!SetF@{SetF}}
+\index{SetF@{SetF}!TalonSRXMotor@{TalonSRXMotor}}
+\doxysubsubsection{\texorpdfstring{SetF()}{SetF()}}
+{\footnotesize\ttfamily void Talon\+SRXMotor\+::\+SetF (\begin{DoxyParamCaption}\item[{double}]{kF }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonSRXMotor_a28782ab8b89a47068dc015bef17d36ca}\label{classTalonSRXMotor_a28782ab8b89a47068dc015bef17d36ca}} 
+\index{TalonSRXMotor@{TalonSRXMotor}!SetI@{SetI}}
+\index{SetI@{SetI}!TalonSRXMotor@{TalonSRXMotor}}
+\doxysubsubsection{\texorpdfstring{SetI()}{SetI()}}
+{\footnotesize\ttfamily void Talon\+SRXMotor\+::\+SetI (\begin{DoxyParamCaption}\item[{double}]{kI }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonSRXMotor_a5f5c8ce8714d8748991f576afedf0b11}\label{classTalonSRXMotor_a5f5c8ce8714d8748991f576afedf0b11}} 
+\index{TalonSRXMotor@{TalonSRXMotor}!setInverted@{setInverted}}
+\index{setInverted@{setInverted}!TalonSRXMotor@{TalonSRXMotor}}
+\doxysubsubsection{\texorpdfstring{setInverted()}{setInverted()}}
+{\footnotesize\ttfamily bool Talon\+SRXMotor\+::set\+Inverted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonSRXMotor_ac44f935162b12933417bc5dbad4bfbc1}\label{classTalonSRXMotor_ac44f935162b12933417bc5dbad4bfbc1}} 
+\index{TalonSRXMotor@{TalonSRXMotor}!SetOutputRange@{SetOutputRange}}
+\index{SetOutputRange@{SetOutputRange}!TalonSRXMotor@{TalonSRXMotor}}
+\doxysubsubsection{\texorpdfstring{SetOutputRange()}{SetOutputRange()}}
+{\footnotesize\ttfamily void Talon\+SRXMotor\+::\+Set\+Output\+Range (\begin{DoxyParamCaption}\item[{double}]{k\+Peak\+OF,  }\item[{double}]{k\+Peak\+OR,  }\item[{double}]{k\+Nominal\+OF = {\ttfamily 0},  }\item[{double}]{k\+Nominal\+OR = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonSRXMotor_a39ceda723f9dd9fb06821741ebf146f8}\label{classTalonSRXMotor_a39ceda723f9dd9fb06821741ebf146f8}} 
+\index{TalonSRXMotor@{TalonSRXMotor}!SetP@{SetP}}
+\index{SetP@{SetP}!TalonSRXMotor@{TalonSRXMotor}}
+\doxysubsubsection{\texorpdfstring{SetP()}{SetP()}}
+{\footnotesize\ttfamily void Talon\+SRXMotor\+::\+SetP (\begin{DoxyParamCaption}\item[{double}]{kP }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonSRXMotor_abbc62740c09718edbe69fb6a89ed89d9}\label{classTalonSRXMotor_abbc62740c09718edbe69fb6a89ed89d9}} 
+\index{TalonSRXMotor@{TalonSRXMotor}!SetPercent@{SetPercent}}
+\index{SetPercent@{SetPercent}!TalonSRXMotor@{TalonSRXMotor}}
+\doxysubsubsection{\texorpdfstring{SetPercent()}{SetPercent()}}
+{\footnotesize\ttfamily void Talon\+SRXMotor\+::\+Set\+Percent (\begin{DoxyParamCaption}\item[{double}]{speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonSRXMotor_aafc0d726a1643c4a872f5662891ca1fa}\label{classTalonSRXMotor_aafc0d726a1643c4a872f5662891ca1fa}} 
+\index{TalonSRXMotor@{TalonSRXMotor}!SetPositionPID@{SetPositionPID}}
+\index{SetPositionPID@{SetPositionPID}!TalonSRXMotor@{TalonSRXMotor}}
+\doxysubsubsection{\texorpdfstring{SetPositionPID()}{SetPositionPID()}}
+{\footnotesize\ttfamily void Talon\+SRXMotor\+::\+Set\+Position\+PID (\begin{DoxyParamCaption}\item[{double}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classTalonSRXMotor_a0bd2b64b23dd352cb9ea1342f98791da}\label{classTalonSRXMotor_a0bd2b64b23dd352cb9ea1342f98791da}} 
+\index{TalonSRXMotor@{TalonSRXMotor}!SetSpeedPID@{SetSpeedPID}}
+\index{SetSpeedPID@{SetSpeedPID}!TalonSRXMotor@{TalonSRXMotor}}
+\doxysubsubsection{\texorpdfstring{SetSpeedPID()}{SetSpeedPID()}}
+{\footnotesize\ttfamily void Talon\+SRXMotor\+::\+Set\+Speed\+PID (\begin{DoxyParamCaption}\item[{double}]{speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+motor/Talon\+SRXMotor.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,94 @@
+\hypertarget{SwerveModule_8hpp_source}{}\doxysection{Swerve\+Module.\+hpp}
+\label{SwerveModule_8hpp_source}\index{swerve/SwerveModule.hpp@{swerve/SwerveModule.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{/*\ By\ Luke\ White\ and\ Tyler\ Clarke}}
+\DoxyCodeLine{00002\ \textcolor{comment}{\ \ \ \ Custom\ swerve\ module\ library\ using\ PIDController.}}
+\DoxyCodeLine{00003\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Note:\ This\ and\ PIDController.hpp\ need\ some\ more\ cleanup\ work.}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}SparkMax.hpp"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <ctre/Phoenix.h>}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}motor/PIDController.hpp"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classSwerveModule}{SwerveModule}}\ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{classBaseMotor}{BaseMotor}}*\ speed;}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{classBaseMotor}{BaseMotor}}*\ direction;}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{classPIDPositionController}{PIDPositionController}}*\ directionController;}
+\DoxyCodeLine{00018\ \ \ \ \ CANCoder*\ cancoder;}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{double}\ curPercent;\ \textcolor{comment}{//\ So\ multiple\ commands\ can\ alter\ speed}}
+\DoxyCodeLine{00021\ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{bool}\ isLinked\ =\ \textcolor{keyword}{false};\ \ }
+\DoxyCodeLine{00023\ \ \ \ }
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{classSwerveModule}{SwerveModule}}*\ linkSwerve;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{double}\ encoderOffset;\ \textcolor{comment}{//\ Being\ CTRE\ their\ calibration\ code\ doesn't\ work.\ Like,\ at\ all.\ So\ this\ is\ the\ "{}custom"{}\ version.}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{classSwerveModule}{SwerveModule}}(\mbox{\hyperlink{classBaseMotor}{BaseMotor}}*\ speedMotor,\ \mbox{\hyperlink{classBaseMotor}{BaseMotor}}*\ directionMotor,\ \textcolor{keywordtype}{int}\ CanCoderID,\ \textcolor{keywordtype}{double}\ offset,\ \textcolor{keywordtype}{bool}\ speedInverted=\textcolor{keyword}{false},\ \textcolor{keywordtype}{bool}\ direcInverted=\textcolor{keyword}{false})\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ encoderOffset\ =\ offset;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Swerve:\ "{}}\ <<\ speedID\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ directionIdentifier\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ CanCoderID\ <<\ \textcolor{stringliteral}{"{},\ "{}}\ <<\ roll\ <<\ std::endl;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ speed\ =\ speedMotor;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ direction\ =\ directionMotor;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ cancoder\ =\ \textcolor{keyword}{new}\ CANCoder\ \{CanCoderID\};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ directionController\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{classPIDPositionController}{PIDPositionController}}\ (direction);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ directionController\ -\/>\ constants.P\ =\ 0.0005;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//directionController\ -\/>\ constants.I\ =\ 0.0001;}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ directionController\ -\/>\ constants.MaxOutput\ =\ 0.2;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ directionController\ -\/>\ constants.MinOutput\ =\ -\/0.2;}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ directionController\ -\/>\ SetCircumference(4096);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (speedInverted)\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ speed\ -\/>\ setInverted(\textcolor{keyword}{true});}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ speed\ -\/>\ setInverted(\textcolor{keyword}{false});}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (direcInverted)\ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ direction\ -\/>\ setInverted(\textcolor{keyword}{true});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ direction\ -\/>\ setInverted(\textcolor{keyword}{false});}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ Link(\mbox{\hyperlink{classSwerveModule}{SwerveModule}}*\ LinkSwerve)\ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ isLinked\ =\ \textcolor{keyword}{true};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ linkSwerve\ =\ LinkSwerve;\ }
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ SetDirection(\textcolor{keywordtype}{double}\ targetPos)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ directionController\ -\/>\ SetPosition(targetPos);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ directionController\ -\/>\ Update(GetAbsoluteCANCoderPos());}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isLinked)\{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ linkSwerve\ -\/>\ SetDirectionAngle(targetPos);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ MovePercent(\textcolor{keywordtype}{double}\ spd,\ \textcolor{keywordtype}{bool}\ followLink\ =\ \textcolor{keyword}{true})\{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ curPercent\ +=\ spd;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isLinked\ \&\&\ followLink)\{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ linkSwerve\ -\/>\ MovePercent(spd);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ ApplySpeed()\{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ speed\ -\/>\ SetPercent(curPercent);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ curPercent\ =\ 0;\ \textcolor{comment}{//\ Velocity\ ain't\ "{}sticky"{},\ this\ is\ a\ safety\ thing}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isLinked)\{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ linkSwerve\ -\/>\ ApplySpeed();}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \}\ }
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{long}\ GetDirection()\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ smartLoop(cancoder\ -\/>\ GetAbsolutePosition()\ -\/\ encoderOffset);}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
+\DoxyCodeLine{00088\ \};}
+
+\end{DoxyCode}

@@ -1,0 +1,216 @@
+\hypertarget{classSparkMotor}{}\doxysection{Spark\+Motor Class Reference}
+\label{classSparkMotor}\index{SparkMotor@{SparkMotor}}
+Inheritance diagram for Spark\+Motor\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classSparkMotor}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSparkMotor_a0e9649f13ef4ca97eb2e25121b3de5a5}\label{classSparkMotor_a0e9649f13ef4ca97eb2e25121b3de5a5}} 
+{\bfseries Spark\+Motor} (int can\+ID)
+\item 
+void \mbox{\hyperlink{classSparkMotor_a49eaf67f10e8e7b756a36ebd7c0b4094}{set\+Inverted}} ()
+\item 
+void \mbox{\hyperlink{classSparkMotor_a87f4ff11208ad88af44c3772de28cbe2}{Set\+Percent}} (double percent)
+\item 
+void \mbox{\hyperlink{classSparkMotor_abb1b4d3d0b7b7845a7787a5cf7347895}{SetP}} (double kP)
+\item 
+void \mbox{\hyperlink{classSparkMotor_ae0426789f18d222fa074e49ee61f57af}{SetI}} (double kI)
+\item 
+void \mbox{\hyperlink{classSparkMotor_a9b39ba1614489127f7cd083d93b97751}{SetD}} (double kD)
+\item 
+void \mbox{\hyperlink{classSparkMotor_ac030ccd17486f9bfe6a37a9d47d45dc0}{SetF}} (double kF)
+\item 
+void \mbox{\hyperlink{classSparkMotor_a9ef711a7e37bf8241a6a22cccd62332c}{Set\+Output\+Range}} (double k\+Peak\+OF, double k\+Peak\+OR, double k\+Nominal\+OF=0, double k\+Nominal\+OR=0)
+\item 
+double \mbox{\hyperlink{classSparkMotor_a926d155ba73d4f8ce6debf4fe53e5193}{Get\+Position}} ()
+\item 
+double \mbox{\hyperlink{classSparkMotor_a496b95849d3d780ee32ee14bc4d0ee7a}{Get\+Velocity}} ()
+\item 
+void \mbox{\hyperlink{classSparkMotor_a4c971c204c975fd8a0037ceffdfaf39f}{Set\+Position\+PID}} (double position)
+\item 
+void \mbox{\hyperlink{classSparkMotor_a0d9407ef9e4e0b0c55b1f5c5b9d1bf00}{Set\+Speed\+PID}} (double speed)
+\item 
+bool \mbox{\hyperlink{classSparkMotor_a849d89fd5d7872afd610f0363821b6fb}{is\+At\+Zero}} ()
+\end{DoxyCompactItemize}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBaseMotor_a61e487fddfbc270084284518470352e4}\label{classBaseMotor_a61e487fddfbc270084284518470352e4}} 
+virtual void {\bfseries Set\+Percent} (double percent)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_a90fc9bd2d7fce5157dc0b90c4a03a096}\label{classBaseMotor_a90fc9bd2d7fce5157dc0b90c4a03a096}} 
+virtual void {\bfseries set\+Inverted} ()=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_aab8429fbe1317f1f0989524d0f99f0bc}\label{classBaseMotor_aab8429fbe1317f1f0989524d0f99f0bc}} 
+virtual void {\bfseries SetP} (double kP)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_acd5e4478b4329fc341a8cf9a8957c6c7}\label{classBaseMotor_acd5e4478b4329fc341a8cf9a8957c6c7}} 
+virtual void {\bfseries SetI} (double kI)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_aba3832517f84b4a1f070dff92440422f}\label{classBaseMotor_aba3832517f84b4a1f070dff92440422f}} 
+virtual void {\bfseries SetD} (double kD)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_a5eb4d772595a2cdf402e45e00b733aae}\label{classBaseMotor_a5eb4d772595a2cdf402e45e00b733aae}} 
+virtual void {\bfseries SetF} (double kF)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_aa025c0d9ad078567d03224193516ed29}\label{classBaseMotor_aa025c0d9ad078567d03224193516ed29}} 
+virtual void {\bfseries Set\+Output\+Range} (double k\+Peak\+OF, double k\+Peak\+OR, double k\+Nominal\+OF, double k\+Nominal\+OR)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_aebe865d9924792c55113031218e6b3c4}\label{classBaseMotor_aebe865d9924792c55113031218e6b3c4}} 
+virtual double {\bfseries Get\+Position} ()=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_a6f452dd523c244b4c63282d1bdd967a6}\label{classBaseMotor_a6f452dd523c244b4c63282d1bdd967a6}} 
+virtual double {\bfseries Get\+Velocity} ()=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_a09ead7a8b2876c3177a0258c5608d357}\label{classBaseMotor_a09ead7a8b2876c3177a0258c5608d357}} 
+virtual void {\bfseries Set\+Position\+PID} (double position)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_aab18866cd70caafc5a37f25287c79617}\label{classBaseMotor_aab18866cd70caafc5a37f25287c79617}} 
+virtual void {\bfseries Set\+Speed\+PID} (double speed)=0
+\item 
+\mbox{\Hypertarget{classBaseMotor_a985bf810465e329534b148ae4ac4a922}\label{classBaseMotor_a985bf810465e329534b148ae4ac4a922}} 
+virtual bool {\bfseries is\+At\+Zero} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSparkMotor_a6198d43aeefb68a6a2657ceb038776f8}\label{classSparkMotor_a6198d43aeefb68a6a2657ceb038776f8}} 
+\mbox{\hyperlink{struct__SparkMotorEncoderControlContainer}{\+\_\+\+Spark\+Motor\+Encoder\+Control\+Container}} $\ast$ {\bfseries controls}
+\item 
+\mbox{\Hypertarget{classSparkMotor_ad6388839c56c0aa9b6ecbcad9a824278}\label{classSparkMotor_ad6388839c56c0aa9b6ecbcad9a824278}} 
+rev\+::\+CANSpark\+Max $\ast$ {\bfseries spark}
+\item 
+\mbox{\Hypertarget{classSparkMotor_a8bf92d0416b309531c1e5deac3f10907}\label{classSparkMotor_a8bf92d0416b309531c1e5deac3f10907}} 
+bool {\bfseries invert} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classSparkMotor_a926d155ba73d4f8ce6debf4fe53e5193}\label{classSparkMotor_a926d155ba73d4f8ce6debf4fe53e5193}} 
+\index{SparkMotor@{SparkMotor}!GetPosition@{GetPosition}}
+\index{GetPosition@{GetPosition}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{GetPosition()}{GetPosition()}}
+{\footnotesize\ttfamily double Spark\+Motor\+::\+Get\+Position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a496b95849d3d780ee32ee14bc4d0ee7a}\label{classSparkMotor_a496b95849d3d780ee32ee14bc4d0ee7a}} 
+\index{SparkMotor@{SparkMotor}!GetVelocity@{GetVelocity}}
+\index{GetVelocity@{GetVelocity}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{GetVelocity()}{GetVelocity()}}
+{\footnotesize\ttfamily double Spark\+Motor\+::\+Get\+Velocity (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a849d89fd5d7872afd610f0363821b6fb}\label{classSparkMotor_a849d89fd5d7872afd610f0363821b6fb}} 
+\index{SparkMotor@{SparkMotor}!isAtZero@{isAtZero}}
+\index{isAtZero@{isAtZero}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{isAtZero()}{isAtZero()}}
+{\footnotesize\ttfamily bool Spark\+Motor\+::is\+At\+Zero (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a9b39ba1614489127f7cd083d93b97751}\label{classSparkMotor_a9b39ba1614489127f7cd083d93b97751}} 
+\index{SparkMotor@{SparkMotor}!SetD@{SetD}}
+\index{SetD@{SetD}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetD()}{SetD()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+SetD (\begin{DoxyParamCaption}\item[{double}]{kD }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_ac030ccd17486f9bfe6a37a9d47d45dc0}\label{classSparkMotor_ac030ccd17486f9bfe6a37a9d47d45dc0}} 
+\index{SparkMotor@{SparkMotor}!SetF@{SetF}}
+\index{SetF@{SetF}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetF()}{SetF()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+SetF (\begin{DoxyParamCaption}\item[{double}]{kF }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_ae0426789f18d222fa074e49ee61f57af}\label{classSparkMotor_ae0426789f18d222fa074e49ee61f57af}} 
+\index{SparkMotor@{SparkMotor}!SetI@{SetI}}
+\index{SetI@{SetI}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetI()}{SetI()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+SetI (\begin{DoxyParamCaption}\item[{double}]{kI }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a49eaf67f10e8e7b756a36ebd7c0b4094}\label{classSparkMotor_a49eaf67f10e8e7b756a36ebd7c0b4094}} 
+\index{SparkMotor@{SparkMotor}!setInverted@{setInverted}}
+\index{setInverted@{setInverted}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{setInverted()}{setInverted()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::set\+Inverted (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a9ef711a7e37bf8241a6a22cccd62332c}\label{classSparkMotor_a9ef711a7e37bf8241a6a22cccd62332c}} 
+\index{SparkMotor@{SparkMotor}!SetOutputRange@{SetOutputRange}}
+\index{SetOutputRange@{SetOutputRange}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetOutputRange()}{SetOutputRange()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+Set\+Output\+Range (\begin{DoxyParamCaption}\item[{double}]{k\+Peak\+OF,  }\item[{double}]{k\+Peak\+OR,  }\item[{double}]{k\+Nominal\+OF = {\ttfamily 0},  }\item[{double}]{k\+Nominal\+OR = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_abb1b4d3d0b7b7845a7787a5cf7347895}\label{classSparkMotor_abb1b4d3d0b7b7845a7787a5cf7347895}} 
+\index{SparkMotor@{SparkMotor}!SetP@{SetP}}
+\index{SetP@{SetP}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetP()}{SetP()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+SetP (\begin{DoxyParamCaption}\item[{double}]{kP }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a87f4ff11208ad88af44c3772de28cbe2}\label{classSparkMotor_a87f4ff11208ad88af44c3772de28cbe2}} 
+\index{SparkMotor@{SparkMotor}!SetPercent@{SetPercent}}
+\index{SetPercent@{SetPercent}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetPercent()}{SetPercent()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+Set\+Percent (\begin{DoxyParamCaption}\item[{double}]{percent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a4c971c204c975fd8a0037ceffdfaf39f}\label{classSparkMotor_a4c971c204c975fd8a0037ceffdfaf39f}} 
+\index{SparkMotor@{SparkMotor}!SetPositionPID@{SetPositionPID}}
+\index{SetPositionPID@{SetPositionPID}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetPositionPID()}{SetPositionPID()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+Set\+Position\+PID (\begin{DoxyParamCaption}\item[{double}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+\mbox{\Hypertarget{classSparkMotor_a0d9407ef9e4e0b0c55b1f5c5b9d1bf00}\label{classSparkMotor_a0d9407ef9e4e0b0c55b1f5c5b9d1bf00}} 
+\index{SparkMotor@{SparkMotor}!SetSpeedPID@{SetSpeedPID}}
+\index{SetSpeedPID@{SetSpeedPID}!SparkMotor@{SparkMotor}}
+\doxysubsubsection{\texorpdfstring{SetSpeedPID()}{SetSpeedPID()}}
+{\footnotesize\ttfamily void Spark\+Motor\+::\+Set\+Speed\+PID (\begin{DoxyParamCaption}\item[{double}]{speed }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classBaseMotor}{Base\+Motor}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+motor/Spark\+Motor.\+hpp\end{DoxyCompactItemize}
