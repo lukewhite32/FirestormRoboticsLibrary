@@ -145,10 +145,10 @@ public:
     
     void Orient(int angle) {
         if (angle < 180) {
-            SetDirectionAngle((4096/360) * coterminal(270 - (role * 90)));              // Math time
+            SetDirection((4096/360) * coterminal(270 - (swerveRole * 90)));              // Math time
         }
         else {
-            SetDirectionAngle((4096/360) * coterminal(360 - (role * 90)));           
+            SetDirection((4096/360) * coterminal(360 - (swerveRole * 90)));           
         }
         
         if (isLinked) {
