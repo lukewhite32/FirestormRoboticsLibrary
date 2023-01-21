@@ -54,6 +54,8 @@ class SwerveModule {
      */
     double encoderOffset;
 
+    short swerveRole;
+    
 public:
     /**
      * Constructor
@@ -64,12 +66,13 @@ public:
      @param speedInverted Whether or not to invert the wheel speed motor
      @param direcInverted Whether or not to invert the wheel direction motor
      */
-    SwerveModule(BaseMotor* speedMotor, BaseMotor* directionMotor, int CanCoderID, double offset, bool speedInverted=false, bool direcInverted=false) {
+    SwerveModule(BaseMotor* speedMotor, BaseMotor* directionMotor, int CanCoderID, short role, double offset, bool speedInverted=false, bool direcInverted=false) {
         encoderOffset = offset;
         speed = speedMotor;
         direction = directionMotor;
         cancoder = new CANCoder {CanCoderID};
-
+        
+        swerveRole = role;
         directionController = new PIDController (direction);
         directionController -> constants.P = 0.0005;
         //directionController -> constants.I = 0.0001;
@@ -90,10 +93,21 @@ public:
         linkSwerve = LinkSwerve; 
     }
 
+    double coterminal(double angle) {
+        while (angle >= 360) {
+            angle -= 360;
+        }
+        while (angle < 0) {
+            angle += 360;
+        }
+        return angle;
+    }
+    
     /**
      * Set the direction of the motor.
      @param targetPos The encoder tick to aim for
      */
+    
     void SetDirection(double targetPos) {
         directionController -> SetPosition(targetPos);
         directionController -> Update(GetDirection());
@@ -124,7 +138,23 @@ public:
             linkSwerve -> ApplySpeed();
         }
     } 
-
+    
+    /**
+     * Orient the swerve drive 
+     */
+    
+    void Orient(int angle) {
+        if (angle < 180) {
+            SetDirectionAngle((4096/360) * coterminal(270 - (role * 90)));              // Math time
+        }
+        else {
+            SetDirectionAngle((4096/360) * coterminal(360 - (role * 90)));           
+        }
+        
+        if (isLinked) {
+            linkSwerve -> Orient(angle);
+        }
+    }
     /**
      * Get the current (physical) direction of the module
      */
